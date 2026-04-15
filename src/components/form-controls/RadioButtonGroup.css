@@ -1,0 +1,89 @@
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.radio-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding: 6px 2px;
+  transition: color 0.15s;
+  user-select: none;
+}
+
+.radio-item:hover {
+  color: var(--color-text-primary);
+}
+
+.radio-item--selected {
+  color: var(--color-text-primary);
+}
+
+.radio-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.radio-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.radio-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  transition: border-color 0.15s;
+}
+
+.radio-item--selected .radio-outer {
+  border-color: var(--color-accent);
+}
+
+.radio-item:hover .radio-outer {
+  border-color: var(--color-border-hover);
+}
+
+.radio-item--selected:hover .radio-outer {
+  border-color: var(--color-accent-hover);
+}
+
+.radio-inner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.radio-label {
+  line-height: 1;
+}
+
+.radio-info {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  cursor: help;
+  margin-left: -2px;
+  transition: color 0.15s;
+}
+
+.radio-info:hover {
+  color: var(--color-accent);
+}

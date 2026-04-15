@@ -1,0 +1,67 @@
+.number-stepper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.number-stepper-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1;
+}
+
+.number-stepper-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.number-stepper-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s;
+  user-select: none;
+}
+
+.number-stepper-btn:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  border-right: none;
+}
+
+.number-stepper-btn:last-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-left: none;
+}
+
+.number-stepper-btn:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+}
+
+.number-stepper-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.number-stepper-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 28px;
+  background: var(--color-bg-input);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-size: 13px;
+  text-align: center;
+  user-select: none;
+}

@@ -1,0 +1,1655 @@
+/* ══════════════════════════════════════════════════════════
+   Theme System — 24 research-backed color schemes
+   Principles: WCAG AAA primary text (7:1+), no pure black/white,
+   halation-safe contrast (≤17:1), Material elevation model,
+   warm options for evening, OLED fringe avoidance.
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Shared radii & shadows (all themes inherit) ──────── */
+:root {
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+}
+
+/* ── 1. Obsidian Night (default) ─────────────────────── */
+:root,
+[data-theme="obsidian-night"] {
+  --color-bg-primary: #0B0E14;
+  --color-bg-secondary: #141820;
+  --color-bg-tertiary: #1C222C;
+  --color-bg-hover: #252C38;
+  --color-bg-input: #080B10;
+  --color-border: #2A3040;
+  --color-border-hover: #6C9EF8;
+  --color-border-focus: #8BB4FF;
+  --color-accent: #6C9EF8;
+  --color-accent-hover: #8BB4FF;
+  --color-accent-pressed: #5080D0;
+  --color-accent-text: #6C9EF8;
+  --color-text-primary: #D4D4D8;
+  --color-text-secondary: #9CA3AF;
+  --color-text-muted: #5C6370;
+  --color-positive: #4ADE80;
+  --color-negative: #F87171;
+  --color-warning: #FBBF24;
+  --color-info: #60A5FA;
+  --shadow-panel: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-dropdown: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+/* ── 2. Charcoal Fog ─────────────────────────────────── */
+[data-theme="charcoal-fog"] {
+  --color-bg-primary: #1A1B1E;
+  --color-bg-secondary: #242528;
+  --color-bg-tertiary: #2E2F32;
+  --color-bg-hover: #38393C;
+  --color-bg-input: #141518;
+  --color-border: #3A3B3F;
+  --color-border-hover: #A0A4F0;
+  --color-border-focus: #B4B8FF;
+  --color-accent: #A0A4F0;
+  --color-accent-hover: #B4B8FF;
+  --color-accent-pressed: #8084D0;
+  --color-accent-text: #A0A4F0;
+  --color-text-primary: #E0E0E3;
+  --color-text-secondary: #9E9EA3;
+  --color-text-muted: #636368;
+  --color-positive: #6DD68C;
+  --color-negative: #E86C6C;
+  --color-warning: #E8B84C;
+  --color-info: #70AADC;
+}
+
+/* ── 3. Deep Ocean ───────────────────────────────────── */
+[data-theme="deep-ocean"] {
+  --color-bg-primary: #0A1628;
+  --color-bg-secondary: #0F1E34;
+  --color-bg-tertiary: #162840;
+  --color-bg-hover: #1E3450;
+  --color-bg-input: #071020;
+  --color-border: #1E3A5C;
+  --color-border-hover: #38BDF8;
+  --color-border-focus: #5CC8FA;
+  --color-accent: #38BDF8;
+  --color-accent-hover: #5CC8FA;
+  --color-accent-pressed: #2098D0;
+  --color-accent-text: #38BDF8;
+  --color-text-primary: #D6E4F0;
+  --color-text-secondary: #8AA4BE;
+  --color-text-muted: #4C6A88;
+  --color-positive: #34D399;
+  --color-negative: #FB7185;
+  --color-warning: #F59E0B;
+  --color-info: #7DD3FC;
+}
+
+/* ── 4. Ember Glow (warm — reduced blue) ─────────────── */
+[data-theme="ember-glow"] {
+  --color-bg-primary: #1A1210;
+  --color-bg-secondary: #241A16;
+  --color-bg-tertiary: #2E221E;
+  --color-bg-hover: #382C26;
+  --color-bg-input: #14100C;
+  --color-border: #3E3028;
+  --color-border-hover: #F0A060;
+  --color-border-focus: #F4B47C;
+  --color-accent: #F0A060;
+  --color-accent-hover: #F4B47C;
+  --color-accent-pressed: #D08848;
+  --color-accent-text: #F0A060;
+  --color-text-primary: #E8DDD4;
+  --color-text-secondary: #B0A090;
+  --color-text-muted: #706050;
+  --color-positive: #78C878;
+  --color-negative: #E07060;
+  --color-warning: #E8B040;
+  --color-info: #70A8D0;
+}
+
+/* ── 5. Arctic Slate ─────────────────────────────────── */
+[data-theme="arctic-slate"] {
+  --color-bg-primary: #111418;
+  --color-bg-secondary: #1A1E24;
+  --color-bg-tertiary: #242A32;
+  --color-bg-hover: #2E363E;
+  --color-bg-input: #0C0F14;
+  --color-border: #343C48;
+  --color-border-hover: #88C8E8;
+  --color-border-focus: #A0D6F0;
+  --color-accent: #88C8E8;
+  --color-accent-hover: #A0D6F0;
+  --color-accent-pressed: #68A8C8;
+  --color-accent-text: #88C8E8;
+  --color-text-primary: #CDD6E4;
+  --color-text-secondary: #8896AA;
+  --color-text-muted: #4E5C70;
+  --color-positive: #5CD8A0;
+  --color-negative: #F07878;
+  --color-warning: #F0C050;
+  --color-info: #80B8E0;
+}
+
+/* ── 6. Midnight Plum ────────────────────────────────── */
+[data-theme="midnight-plum"] {
+  --color-bg-primary: #120E18;
+  --color-bg-secondary: #1C1624;
+  --color-bg-tertiary: #261E30;
+  --color-bg-hover: #30283A;
+  --color-bg-input: #0E0A14;
+  --color-border: #382E48;
+  --color-border-hover: #C084FC;
+  --color-border-focus: #D0A0FF;
+  --color-accent: #C084FC;
+  --color-accent-hover: #D0A0FF;
+  --color-accent-pressed: #A068D8;
+  --color-accent-text: #C084FC;
+  --color-text-primary: #DDD4E8;
+  --color-text-secondary: #9E90B0;
+  --color-text-muted: #5E5070;
+  --color-positive: #68D89C;
+  --color-negative: #F47888;
+  --color-warning: #F0B848;
+  --color-info: #80A8E8;
+}
+
+/* ── 7. Forest Canopy ────────────────────────────────── */
+[data-theme="forest-canopy"] {
+  --color-bg-primary: #0C1410;
+  --color-bg-secondary: #141E18;
+  --color-bg-tertiary: #1C2820;
+  --color-bg-hover: #24322A;
+  --color-bg-input: #080F0C;
+  --color-border: #2C3C30;
+  --color-border-hover: #4ADE80;
+  --color-border-focus: #6DE898;
+  --color-accent: #4ADE80;
+  --color-accent-hover: #6DE898;
+  --color-accent-pressed: #38B868;
+  --color-accent-text: #4ADE80;
+  --color-text-primary: #C8DCC8;
+  --color-text-secondary: #88A888;
+  --color-text-muted: #4C6C4C;
+  --color-positive: #5CE8A0;
+  --color-negative: #E87070;
+  --color-warning: #E8C050;
+  --color-info: #68B0D8;
+}
+
+/* ── 8. Volcanic ─────────────────────────────────────── */
+[data-theme="volcanic"] {
+  --color-bg-primary: #1A0E0E;
+  --color-bg-secondary: #241616;
+  --color-bg-tertiary: #2E1E1E;
+  --color-bg-hover: #382828;
+  --color-bg-input: #140A0A;
+  --color-border: #402C2C;
+  --color-border-hover: #F47068;
+  --color-border-focus: #F88C84;
+  --color-accent: #F47068;
+  --color-accent-hover: #F88C84;
+  --color-accent-pressed: #D05850;
+  --color-accent-text: #F47068;
+  --color-text-primary: #E4D0D0;
+  --color-text-secondary: #B09090;
+  --color-text-muted: #705858;
+  --color-positive: #60D890;
+  --color-negative: #F06868;
+  --color-warning: #E8B040;
+  --color-info: #68A8D8;
+}
+
+/* ── 9. Carbon ───────────────────────────────────────── */
+[data-theme="carbon"] {
+  --color-bg-primary: #0E0E0E;
+  --color-bg-secondary: #181818;
+  --color-bg-tertiary: #222222;
+  --color-bg-hover: #2C2C2C;
+  --color-bg-input: #0A0A0A;
+  --color-border: #333333;
+  --color-border-hover: #A0A0A0;
+  --color-border-focus: #BCBCBC;
+  --color-accent: #A0A0A0;
+  --color-accent-hover: #BCBCBC;
+  --color-accent-pressed: #808080;
+  --color-accent-text: #A0A0A0;
+  --color-text-primary: #D8D8D8;
+  --color-text-secondary: #909090;
+  --color-text-muted: #585858;
+  --color-positive: #5CD87C;
+  --color-negative: #E87070;
+  --color-warning: #E8B848;
+  --color-info: #68A8D8;
+}
+
+/* ── 10. Cobalt ──────────────────────────────────────── */
+[data-theme="cobalt"] {
+  --color-bg-primary: #0D1117;
+  --color-bg-secondary: #161B22;
+  --color-bg-tertiary: #21262D;
+  --color-bg-hover: #2A3038;
+  --color-bg-input: #090D12;
+  --color-border: #30363D;
+  --color-border-hover: #58A6FF;
+  --color-border-focus: #79B8FF;
+  --color-accent: #58A6FF;
+  --color-accent-hover: #79B8FF;
+  --color-accent-pressed: #4088D8;
+  --color-accent-text: #58A6FF;
+  --color-text-primary: #C9D1D9;
+  --color-text-secondary: #8B949E;
+  --color-text-muted: #484F58;
+  --color-positive: #3FB950;
+  --color-negative: #F85149;
+  --color-warning: #D29922;
+  --color-info: #58A6FF;
+}
+
+/* ── 11. Sandstone ───────────────────────────────────── */
+[data-theme="sandstone"] {
+  --color-bg-primary: #1A1714;
+  --color-bg-secondary: #24201C;
+  --color-bg-tertiary: #2E2A24;
+  --color-bg-hover: #38342E;
+  --color-bg-input: #141210;
+  --color-border: #403830;
+  --color-border-hover: #D4A76A;
+  --color-border-focus: #E0BC88;
+  --color-accent: #D4A76A;
+  --color-accent-hover: #E0BC88;
+  --color-accent-pressed: #B48850;
+  --color-accent-text: #D4A76A;
+  --color-text-primary: #DDD5C8;
+  --color-text-secondary: #A89880;
+  --color-text-muted: #6E6050;
+  --color-positive: #70C878;
+  --color-negative: #D87060;
+  --color-warning: #D8A840;
+  --color-info: #6898C0;
+}
+
+/* ── 12. Graphite ────────────────────────────────────── */
+[data-theme="graphite"] {
+  --color-bg-primary: #1E1E1E;
+  --color-bg-secondary: #282828;
+  --color-bg-tertiary: #323232;
+  --color-bg-hover: #3C3C3C;
+  --color-bg-input: #181818;
+  --color-border: #424242;
+  --color-border-hover: #569CD6;
+  --color-border-focus: #75B0E0;
+  --color-accent: #569CD6;
+  --color-accent-hover: #75B0E0;
+  --color-accent-pressed: #4080B0;
+  --color-accent-text: #569CD6;
+  --color-text-primary: #D4D4D4;
+  --color-text-secondary: #969696;
+  --color-text-muted: #5A5A5A;
+  --color-positive: #6A9955;
+  --color-negative: #F44747;
+  --color-warning: #CCA700;
+  --color-info: #569CD6;
+}
+
+/* ── 13. Twilight ────────────────────────────────────── */
+[data-theme="twilight"] {
+  --color-bg-primary: #13111C;
+  --color-bg-secondary: #1C1828;
+  --color-bg-tertiary: #262034;
+  --color-bg-hover: #302A3E;
+  --color-bg-input: #0E0C16;
+  --color-border: #382E4C;
+  --color-border-hover: #A78BFA;
+  --color-border-focus: #BDA4FF;
+  --color-accent: #A78BFA;
+  --color-accent-hover: #BDA4FF;
+  --color-accent-pressed: #8870D8;
+  --color-accent-text: #A78BFA;
+  --color-text-primary: #D8D4E8;
+  --color-text-secondary: #9890B0;
+  --color-text-muted: #5C5478;
+  --color-positive: #5CE8A0;
+  --color-negative: #F47888;
+  --color-warning: #F0B848;
+  --color-info: #7CA8F0;
+}
+
+/* ── 14. Moss ────────────────────────────────────────── */
+[data-theme="moss"] {
+  --color-bg-primary: #141810;
+  --color-bg-secondary: #1C221A;
+  --color-bg-tertiary: #252E22;
+  --color-bg-hover: #2E382C;
+  --color-bg-input: #10140C;
+  --color-border: #364030;
+  --color-border-hover: #A8D870;
+  --color-border-focus: #BCE088;
+  --color-accent: #A8D870;
+  --color-accent-hover: #BCE088;
+  --color-accent-pressed: #88B858;
+  --color-accent-text: #A8D870;
+  --color-text-primary: #D0DCC4;
+  --color-text-secondary: #90A880;
+  --color-text-muted: #506840;
+  --color-positive: #68E090;
+  --color-negative: #E07060;
+  --color-warning: #D8B848;
+  --color-info: #60A0D0;
+}
+
+/* ── 15. Copper (warm — reduced blue) ────────────────── */
+[data-theme="copper"] {
+  --color-bg-primary: #1C1410;
+  --color-bg-secondary: #261C16;
+  --color-bg-tertiary: #30241E;
+  --color-bg-hover: #3A2E28;
+  --color-bg-input: #16100C;
+  --color-border: #443428;
+  --color-border-hover: #E08850;
+  --color-border-focus: #E8A070;
+  --color-accent: #E08850;
+  --color-accent-hover: #E8A070;
+  --color-accent-pressed: #C07040;
+  --color-accent-text: #E08850;
+  --color-text-primary: #E0D0C0;
+  --color-text-secondary: #A89080;
+  --color-text-muted: #6E5848;
+  --color-positive: #68C878;
+  --color-negative: #D86858;
+  --color-warning: #D8A838;
+  --color-info: #5898C8;
+}
+
+/* ── 16. Void (OLED-optimized) ───────────────────────── */
+[data-theme="void"] {
+  --color-bg-primary: #010104;
+  --color-bg-secondary: #0C0C10;
+  --color-bg-tertiary: #16161C;
+  --color-bg-hover: #202028;
+  --color-bg-input: #000002;
+  --color-border: #28283A;
+  --color-border-hover: #7C8CFF;
+  --color-border-focus: #98A4FF;
+  --color-accent: #7C8CFF;
+  --color-accent-hover: #98A4FF;
+  --color-accent-pressed: #6070D8;
+  --color-accent-text: #7C8CFF;
+  --color-text-primary: #D0D0D4;
+  --color-text-secondary: #8888A0;
+  --color-text-muted: #505068;
+  --color-positive: #50E088;
+  --color-negative: #F07070;
+  --color-warning: #E8B840;
+  --color-info: #60A0F0;
+}
+
+/* ── 17. Snowfield (light) ───────────────────────────── */
+[data-theme="snowfield"] {
+  --color-bg-primary: #F5F5F0;
+  --color-bg-secondary: #EAEAE4;
+  --color-bg-tertiary: #DDDDD8;
+  --color-bg-hover: #D0D0CA;
+  --color-bg-input: #FFFFFF;
+  --color-border: #C8C8C0;
+  --color-border-hover: #2563EB;
+  --color-border-focus: #3B7CF5;
+  --color-accent: #2563EB;
+  --color-accent-hover: #1D4ED8;
+  --color-accent-pressed: #1E40AF;
+  --color-accent-text: #2563EB;
+  --color-text-primary: #1A1A22;
+  --color-text-secondary: #505060;
+  --color-text-muted: #8888A0;
+  --color-positive: #16A34A;
+  --color-negative: #DC2626;
+  --color-warning: #B45309;
+  --color-info: #2563EB;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* ── 18. Paper (light warm) ──────────────────────────── */
+[data-theme="paper"] {
+  --color-bg-primary: #FAF6F0;
+  --color-bg-secondary: #F0ECE4;
+  --color-bg-tertiary: #E4E0D8;
+  --color-bg-hover: #D8D4CC;
+  --color-bg-input: #FFFFFF;
+  --color-border: #D0CCC4;
+  --color-border-hover: #B45309;
+  --color-border-focus: #92400E;
+  --color-accent: #B45309;
+  --color-accent-hover: #92400E;
+  --color-accent-pressed: #7C2D12;
+  --color-accent-text: #B45309;
+  --color-text-primary: #2A2520;
+  --color-text-secondary: #5C5448;
+  --color-text-muted: #8E8678;
+  --color-positive: #15803D;
+  --color-negative: #B91C1C;
+  --color-warning: #A16207;
+  --color-info: #1E6EB5;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ── 19. Daylight (light cool) ───────────────────────── */
+[data-theme="daylight"] {
+  --color-bg-primary: #F0F4F8;
+  --color-bg-secondary: #E2E8F0;
+  --color-bg-tertiary: #CBD5E1;
+  --color-bg-hover: #BEC8D8;
+  --color-bg-input: #FFFFFF;
+  --color-border: #94A3B8;
+  --color-border-hover: #3B82F6;
+  --color-border-focus: #2563EB;
+  --color-accent: #3B82F6;
+  --color-accent-hover: #2563EB;
+  --color-accent-pressed: #1D4ED8;
+  --color-accent-text: #3B82F6;
+  --color-text-primary: #1A202C;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-positive: #15803D;
+  --color-negative: #DC2626;
+  --color-warning: #B45309;
+  --color-info: #2563EB;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* ── 20. Chalk (light warm neutral) ──────────────────── */
+[data-theme="chalk"] {
+  --color-bg-primary: #EEEEE8;
+  --color-bg-secondary: #E2E2DC;
+  --color-bg-tertiary: #D6D6D0;
+  --color-bg-hover: #CACAC4;
+  --color-bg-input: #F8F8F4;
+  --color-border: #BCBCB4;
+  --color-border-hover: #6D28D9;
+  --color-border-focus: #5B21B6;
+  --color-accent: #6D28D9;
+  --color-accent-hover: #5B21B6;
+  --color-accent-pressed: #4C1D95;
+  --color-accent-text: #6D28D9;
+  --color-text-primary: #22222A;
+  --color-text-secondary: #52525B;
+  --color-text-muted: #888890;
+  --color-positive: #15803D;
+  --color-negative: #DC2626;
+  --color-warning: #92400E;
+  --color-info: #2563EB;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.07);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ── 21. Phosphor (high-contrast accessibility) ──────── */
+[data-theme="phosphor"] {
+  --color-bg-primary: #050505;
+  --color-bg-secondary: #101010;
+  --color-bg-tertiary: #1A1A1A;
+  --color-bg-hover: #242424;
+  --color-bg-input: #020202;
+  --color-border: #2C2C2C;
+  --color-border-hover: #00FF88;
+  --color-border-focus: #33FFA0;
+  --color-accent: #00FF88;
+  --color-accent-hover: #33FFA0;
+  --color-accent-pressed: #00CC6A;
+  --color-accent-text: #00FF88;
+  --color-text-primary: #E8E8E8;
+  --color-text-secondary: #A0A0A0;
+  --color-text-muted: #606060;
+  --color-positive: #00FF88;
+  --color-negative: #FF4444;
+  --color-warning: #FFD700;
+  --color-info: #44BBFF;
+}
+
+/* ── 22. Blueprint (high-contrast accessibility) ─────── */
+[data-theme="blueprint"] {
+  --color-bg-primary: #000820;
+  --color-bg-secondary: #0C1430;
+  --color-bg-tertiary: #182040;
+  --color-bg-hover: #222C50;
+  --color-bg-input: #000418;
+  --color-border: #283860;
+  --color-border-hover: #FFD700;
+  --color-border-focus: #FFE44D;
+  --color-accent: #FFD700;
+  --color-accent-hover: #FFE44D;
+  --color-accent-pressed: #CCB000;
+  --color-accent-text: #FFD700;
+  --color-text-primary: #E8F0FF;
+  --color-text-secondary: #90A8D0;
+  --color-text-muted: #4C6898;
+  --color-positive: #44E888;
+  --color-negative: #FF5555;
+  --color-warning: #FFD700;
+  --color-info: #44AAFF;
+}
+
+/* ── 23. Campfire (warm — minimal blue) ──────────────── */
+[data-theme="campfire"] {
+  --color-bg-primary: #1C1408;
+  --color-bg-secondary: #261C10;
+  --color-bg-tertiary: #302418;
+  --color-bg-hover: #3A2E22;
+  --color-bg-input: #161006;
+  --color-border: #443824;
+  --color-border-hover: #F0C060;
+  --color-border-focus: #F4D080;
+  --color-accent: #F0C060;
+  --color-accent-hover: #F4D080;
+  --color-accent-pressed: #D0A048;
+  --color-accent-text: #F0C060;
+  --color-text-primary: #EAD8BC;
+  --color-text-secondary: #B09870;
+  --color-text-muted: #706040;
+  --color-positive: #70C878;
+  --color-negative: #D87058;
+  --color-warning: #D8A830;
+  --color-info: #5890C0;
+}
+
+/* ── 24. Horizon (rose-purple) ───────────────────────── */
+[data-theme="horizon"] {
+  --color-bg-primary: #14101C;
+  --color-bg-secondary: #1E1828;
+  --color-bg-tertiary: #282234;
+  --color-bg-hover: #322C3E;
+  --color-bg-input: #100C16;
+  --color-border: #3C3250;
+  --color-border-hover: #E8789C;
+  --color-border-focus: #F090B0;
+  --color-accent: #E8789C;
+  --color-accent-hover: #F090B0;
+  --color-accent-pressed: #C86080;
+  --color-accent-text: #E8789C;
+  --color-text-primary: #DCD4E4;
+  --color-text-secondary: #9C90B0;
+  --color-text-muted: #5C5478;
+  --color-positive: #58E098;
+  --color-negative: #F07070;
+  --color-warning: #E8B848;
+  --color-info: #70A0E8;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Additional 32 themes — Dark, Warm, Holiday, Season,
+   Celestial
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 25. Steel ───────────────────────────────────────── */
+[data-theme="steel"] {
+  --color-bg-primary: #12151A;
+  --color-bg-secondary: #1A1E24;
+  --color-bg-tertiary: #22282E;
+  --color-bg-hover: #2C3238;
+  --color-bg-input: #0E1116;
+  --color-border: #343A42;
+  --color-border-hover: #8CA0B8;
+  --color-border-focus: #A0B4CC;
+  --color-accent: #8CA0B8;
+  --color-accent-hover: #A0B4CC;
+  --color-accent-pressed: #708898;
+  --color-accent-text: #8CA0B8;
+  --color-text-primary: #D0D4DA;
+  --color-text-secondary: #8890A0;
+  --color-text-muted: #505868;
+  --color-positive: #58D490;
+  --color-negative: #E87070;
+  --color-warning: #E0B448;
+  --color-info: #68A0D8;
+}
+
+/* ── 26. Onyx ────────────────────────────────────────── */
+[data-theme="onyx"] {
+  --color-bg-primary: #0C0C08;
+  --color-bg-secondary: #161612;
+  --color-bg-tertiary: #20201C;
+  --color-bg-hover: #2A2A26;
+  --color-bg-input: #080806;
+  --color-border: #343430;
+  --color-border-hover: #C8B898;
+  --color-border-focus: #D8C8A8;
+  --color-accent: #C8B898;
+  --color-accent-hover: #D8C8A8;
+  --color-accent-pressed: #A89878;
+  --color-accent-text: #C8B898;
+  --color-text-primary: #D8D4C8;
+  --color-text-secondary: #989080;
+  --color-text-muted: #605850;
+  --color-positive: #60D080;
+  --color-negative: #D86860;
+  --color-warning: #D8A840;
+  --color-info: #6098C0;
+}
+
+/* ── 27. Nebula ──────────────────────────────────────── */
+[data-theme="nebula"] {
+  --color-bg-primary: #140C18;
+  --color-bg-secondary: #1E1422;
+  --color-bg-tertiary: #281C2E;
+  --color-bg-hover: #322638;
+  --color-bg-input: #100812;
+  --color-border: #3C2C44;
+  --color-border-hover: #D868E8;
+  --color-border-focus: #E488F0;
+  --color-accent: #D868E8;
+  --color-accent-hover: #E488F0;
+  --color-accent-pressed: #B850C8;
+  --color-accent-text: #D868E8;
+  --color-text-primary: #E0D4E8;
+  --color-text-secondary: #A090B0;
+  --color-text-muted: #605070;
+  --color-positive: #60E098;
+  --color-negative: #F07070;
+  --color-warning: #E8B848;
+  --color-info: #70A0E8;
+}
+
+/* ── 28. Ink ─────────────────────────────────────────── */
+[data-theme="ink"] {
+  --color-bg-primary: #080C14;
+  --color-bg-secondary: #10161E;
+  --color-bg-tertiary: #1A2028;
+  --color-bg-hover: #242C34;
+  --color-bg-input: #060A10;
+  --color-border: #2A3240;
+  --color-border-hover: #50B0F0;
+  --color-border-focus: #70C0F8;
+  --color-accent: #50B0F0;
+  --color-accent-hover: #70C0F8;
+  --color-accent-pressed: #3890D0;
+  --color-accent-text: #50B0F0;
+  --color-text-primary: #D0D8E4;
+  --color-text-secondary: #8898B0;
+  --color-text-muted: #4C5C78;
+  --color-positive: #4CD898;
+  --color-negative: #F07878;
+  --color-warning: #F0B848;
+  --color-info: #60B0F0;
+}
+
+/* ── 29. Raven ───────────────────────────────────────── */
+[data-theme="raven"] {
+  --color-bg-primary: #0A0C10;
+  --color-bg-secondary: #14161A;
+  --color-bg-tertiary: #1E2024;
+  --color-bg-hover: #282A2E;
+  --color-bg-input: #06080C;
+  --color-border: #303438;
+  --color-border-hover: #90C8F8;
+  --color-border-focus: #A8D4FF;
+  --color-accent: #90C8F8;
+  --color-accent-hover: #A8D4FF;
+  --color-accent-pressed: #70A8D8;
+  --color-accent-text: #90C8F8;
+  --color-text-primary: #D4D8DC;
+  --color-text-secondary: #8C9098;
+  --color-text-muted: #545860;
+  --color-positive: #58D888;
+  --color-negative: #E87070;
+  --color-warning: #E4B448;
+  --color-info: #78B8F0;
+}
+
+/* ── 30. Shadow ──────────────────────────────────────── */
+[data-theme="shadow"] {
+  --color-bg-primary: #100C14;
+  --color-bg-secondary: #1A161E;
+  --color-bg-tertiary: #242028;
+  --color-bg-hover: #2E2A32;
+  --color-bg-input: #0C080E;
+  --color-border: #363040;
+  --color-border-hover: #B090D0;
+  --color-border-focus: #C0A4E0;
+  --color-accent: #B090D0;
+  --color-accent-hover: #C0A4E0;
+  --color-accent-pressed: #9070B0;
+  --color-accent-text: #B090D0;
+  --color-text-primary: #D8D0E0;
+  --color-text-secondary: #9888A8;
+  --color-text-muted: #585068;
+  --color-positive: #5CD890;
+  --color-negative: #E87878;
+  --color-warning: #E0B448;
+  --color-info: #7098D8;
+}
+
+/* ── 31. Abyss ───────────────────────────────────────── */
+[data-theme="abyss"] {
+  --color-bg-primary: #081014;
+  --color-bg-secondary: #10181E;
+  --color-bg-tertiary: #182028;
+  --color-bg-hover: #222C34;
+  --color-bg-input: #060C10;
+  --color-border: #283438;
+  --color-border-hover: #48D8C0;
+  --color-border-focus: #60E0D0;
+  --color-accent: #48D8C0;
+  --color-accent-hover: #60E0D0;
+  --color-accent-pressed: #38B8A0;
+  --color-accent-text: #48D8C0;
+  --color-text-primary: #C8D8D8;
+  --color-text-secondary: #80A0A0;
+  --color-text-muted: #486868;
+  --color-positive: #50E090;
+  --color-negative: #F07070;
+  --color-warning: #E0B848;
+  --color-info: #58A8E0;
+}
+
+/* ── 32. Slate Blue ──────────────────────────────────── */
+[data-theme="slate-blue"] {
+  --color-bg-primary: #0E1220;
+  --color-bg-secondary: #161C2C;
+  --color-bg-tertiary: #202838;
+  --color-bg-hover: #2A3244;
+  --color-bg-input: #0A0E18;
+  --color-border: #303C50;
+  --color-border-hover: #6888C0;
+  --color-border-focus: #80A0D0;
+  --color-accent: #6888C0;
+  --color-accent-hover: #80A0D0;
+  --color-accent-pressed: #5070A0;
+  --color-accent-text: #6888C0;
+  --color-text-primary: #CCD4E0;
+  --color-text-secondary: #8898B0;
+  --color-text-muted: #4C5C78;
+  --color-positive: #50D890;
+  --color-negative: #E87070;
+  --color-warning: #E0B448;
+  --color-info: #6090D0;
+}
+
+/* ── 33. Terracotta (warm) ───────────────────────────── */
+[data-theme="terracotta"] {
+  --color-bg-primary: #1C1410;
+  --color-bg-secondary: #261C16;
+  --color-bg-tertiary: #30241E;
+  --color-bg-hover: #3A2E26;
+  --color-bg-input: #16100C;
+  --color-border: #443428;
+  --color-border-hover: #D87850;
+  --color-border-focus: #E09068;
+  --color-accent: #D87850;
+  --color-accent-hover: #E09068;
+  --color-accent-pressed: #B86040;
+  --color-accent-text: #D87850;
+  --color-text-primary: #E0D0C4;
+  --color-text-secondary: #A89080;
+  --color-text-muted: #6E5848;
+  --color-positive: #68C878;
+  --color-negative: #D86058;
+  --color-warning: #D8A838;
+  --color-info: #5898C0;
+}
+
+/* ══ HOLIDAYS ═══════════════════════════════════════════ */
+
+/* ── 34. Christmas ───────────────────────────────────── */
+[data-theme="christmas"] {
+  --color-bg-primary: #0C100A;
+  --color-bg-secondary: #141C10;
+  --color-bg-tertiary: #1C2618;
+  --color-bg-hover: #243020;
+  --color-bg-input: #080C06;
+  --color-border: #2C3820;
+  --color-border-hover: #D42A2A;
+  --color-border-focus: #E04040;
+  --color-accent: #D42A2A;
+  --color-accent-hover: #E04040;
+  --color-accent-pressed: #B02020;
+  --color-accent-text: #F05050;
+  --color-text-primary: #D8E0D4;
+  --color-text-secondary: #90A888;
+  --color-text-muted: #506848;
+  --color-positive: #38A850;
+  --color-negative: #D83030;
+  --color-warning: #D8B030;
+  --color-info: #5090C0;
+}
+
+/* ── 35. Easter ──────────────────────────────────────── */
+[data-theme="easter"] {
+  --color-bg-primary: #F4F0F8;
+  --color-bg-secondary: #EAE4F0;
+  --color-bg-tertiary: #DDD6E6;
+  --color-bg-hover: #D0C8DC;
+  --color-bg-input: #FAF8FC;
+  --color-border: #C4B8D4;
+  --color-border-hover: #C890E0;
+  --color-border-focus: #B478D0;
+  --color-accent: #C890E0;
+  --color-accent-hover: #B478D0;
+  --color-accent-pressed: #A060C0;
+  --color-accent-text: #9060B8;
+  --color-text-primary: #2A2230;
+  --color-text-secondary: #585068;
+  --color-text-muted: #908898;
+  --color-positive: #48B068;
+  --color-negative: #D04858;
+  --color-warning: #C09020;
+  --color-info: #5888C0;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ── 36. Halloween ───────────────────────────────────── */
+[data-theme="halloween"] {
+  --color-bg-primary: #0E0A08;
+  --color-bg-secondary: #181210;
+  --color-bg-tertiary: #221A16;
+  --color-bg-hover: #2C241E;
+  --color-bg-input: #0A0806;
+  --color-border: #342820;
+  --color-border-hover: #F08020;
+  --color-border-focus: #F89840;
+  --color-accent: #F08020;
+  --color-accent-hover: #F89840;
+  --color-accent-pressed: #D06818;
+  --color-accent-text: #F08020;
+  --color-text-primary: #E0D8CC;
+  --color-text-secondary: #A89878;
+  --color-text-muted: #686050;
+  --color-positive: #58C070;
+  --color-negative: #D04040;
+  --color-warning: #F08020;
+  --color-info: #6090B8;
+}
+
+/* ── 37. July 4th ────────────────────────────────────── */
+[data-theme="july-4th"] {
+  --color-bg-primary: #080C18;
+  --color-bg-secondary: #101828;
+  --color-bg-tertiary: #182038;
+  --color-bg-hover: #202848;
+  --color-bg-input: #060A14;
+  --color-border: #283450;
+  --color-border-hover: #E83030;
+  --color-border-focus: #F04848;
+  --color-accent: #E83030;
+  --color-accent-hover: #F04848;
+  --color-accent-pressed: #C82020;
+  --color-accent-text: #F05050;
+  --color-text-primary: #D8E0F0;
+  --color-text-secondary: #8898C0;
+  --color-text-muted: #4C6090;
+  --color-positive: #38C060;
+  --color-negative: #E83030;
+  --color-warning: #E8B040;
+  --color-info: #4890E0;
+}
+
+/* ── 38. Valentine's ─────────────────────────────────── */
+[data-theme="valentines"] {
+  --color-bg-primary: #180C10;
+  --color-bg-secondary: #221418;
+  --color-bg-tertiary: #2C1C22;
+  --color-bg-hover: #36242C;
+  --color-bg-input: #14080C;
+  --color-border: #3E2830;
+  --color-border-hover: #F06088;
+  --color-border-focus: #F880A0;
+  --color-accent: #F06088;
+  --color-accent-hover: #F880A0;
+  --color-accent-pressed: #D04870;
+  --color-accent-text: #F06088;
+  --color-text-primary: #E4D0D8;
+  --color-text-secondary: #B08898;
+  --color-text-muted: #705060;
+  --color-positive: #58D890;
+  --color-negative: #E06060;
+  --color-warning: #E0B040;
+  --color-info: #6898D0;
+}
+
+/* ── 39. St. Patrick's ───────────────────────────────── */
+[data-theme="st-patricks"] {
+  --color-bg-primary: #081008;
+  --color-bg-secondary: #101C10;
+  --color-bg-tertiary: #182618;
+  --color-bg-hover: #203020;
+  --color-bg-input: #060C06;
+  --color-border: #283828;
+  --color-border-hover: #28C050;
+  --color-border-focus: #40D068;
+  --color-accent: #28C050;
+  --color-accent-hover: #40D068;
+  --color-accent-pressed: #20A040;
+  --color-accent-text: #40E070;
+  --color-text-primary: #C8DCC8;
+  --color-text-secondary: #80A880;
+  --color-text-muted: #486848;
+  --color-positive: #30D060;
+  --color-negative: #D86060;
+  --color-warning: #D0A830;
+  --color-info: #5090C0;
+}
+
+/* ── 40. Thanksgiving ────────────────────────────────── */
+[data-theme="thanksgiving"] {
+  --color-bg-primary: #141008;
+  --color-bg-secondary: #1E1810;
+  --color-bg-tertiary: #282018;
+  --color-bg-hover: #322820;
+  --color-bg-input: #100C06;
+  --color-border: #3C3020;
+  --color-border-hover: #D08830;
+  --color-border-focus: #E0A048;
+  --color-accent: #D08830;
+  --color-accent-hover: #E0A048;
+  --color-accent-pressed: #B07028;
+  --color-accent-text: #E09838;
+  --color-text-primary: #E0D4C0;
+  --color-text-secondary: #A89470;
+  --color-text-muted: #686040;
+  --color-positive: #60C070;
+  --color-negative: #D06050;
+  --color-warning: #D09830;
+  --color-info: #5090B8;
+}
+
+/* ── 41. New Year's ──────────────────────────────────── */
+[data-theme="new-years"] {
+  --color-bg-primary: #08080E;
+  --color-bg-secondary: #101018;
+  --color-bg-tertiary: #181822;
+  --color-bg-hover: #22222E;
+  --color-bg-input: #06060A;
+  --color-border: #282838;
+  --color-border-hover: #F0D040;
+  --color-border-focus: #F8E060;
+  --color-accent: #F0D040;
+  --color-accent-hover: #F8E060;
+  --color-accent-pressed: #D0B030;
+  --color-accent-text: #F0D040;
+  --color-text-primary: #D8D8E0;
+  --color-text-secondary: #9090A0;
+  --color-text-muted: #585868;
+  --color-positive: #50D880;
+  --color-negative: #E87070;
+  --color-warning: #F0D040;
+  --color-info: #60A0E8;
+}
+
+/* ══ SEASONS ════════════════════════════════════════════ */
+
+/* ── 42. Spring ──────────────────────────────────────── */
+[data-theme="spring"] {
+  --color-bg-primary: #F2F8F0;
+  --color-bg-secondary: #E4F0E2;
+  --color-bg-tertiary: #D4E8D2;
+  --color-bg-hover: #C8DEC4;
+  --color-bg-input: #FAFCFA;
+  --color-border: #B0CCB0;
+  --color-border-hover: #48A850;
+  --color-border-focus: #38903E;
+  --color-accent: #48A850;
+  --color-accent-hover: #38903E;
+  --color-accent-pressed: #2C7832;
+  --color-accent-text: #287830;
+  --color-text-primary: #1A2818;
+  --color-text-secondary: #485840;
+  --color-text-muted: #809878;
+  --color-positive: #38A848;
+  --color-negative: #D04040;
+  --color-warning: #B89020;
+  --color-info: #3880B8;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ── 43. Summer ──────────────────────────────────────── */
+[data-theme="summer"] {
+  --color-bg-primary: #181408;
+  --color-bg-secondary: #221C10;
+  --color-bg-tertiary: #2C2418;
+  --color-bg-hover: #362E20;
+  --color-bg-input: #141006;
+  --color-border: #403420;
+  --color-border-hover: #F0A030;
+  --color-border-focus: #F8B848;
+  --color-accent: #F0A030;
+  --color-accent-hover: #F8B848;
+  --color-accent-pressed: #D08828;
+  --color-accent-text: #F0A030;
+  --color-text-primary: #E8DCC8;
+  --color-text-secondary: #B09870;
+  --color-text-muted: #706040;
+  --color-positive: #60C870;
+  --color-negative: #E06050;
+  --color-warning: #E0A030;
+  --color-info: #5090C0;
+}
+
+/* ── 44. Fall ────────────────────────────────────────── */
+[data-theme="fall"] {
+  --color-bg-primary: #14100A;
+  --color-bg-secondary: #1E1812;
+  --color-bg-tertiary: #28201A;
+  --color-bg-hover: #322822;
+  --color-bg-input: #100C08;
+  --color-border: #3C3020;
+  --color-border-hover: #D87830;
+  --color-border-focus: #E89048;
+  --color-accent: #D87830;
+  --color-accent-hover: #E89048;
+  --color-accent-pressed: #B86028;
+  --color-accent-text: #E08838;
+  --color-text-primary: #E0D4C0;
+  --color-text-secondary: #A89470;
+  --color-text-muted: #686040;
+  --color-positive: #60B868;
+  --color-negative: #D05848;
+  --color-warning: #D09030;
+  --color-info: #5088B8;
+}
+
+/* ── 45. Winter ──────────────────────────────────────── */
+[data-theme="winter"] {
+  --color-bg-primary: #0A1018;
+  --color-bg-secondary: #121A24;
+  --color-bg-tertiary: #1A2430;
+  --color-bg-hover: #242E3C;
+  --color-bg-input: #080C14;
+  --color-border: #2C384C;
+  --color-border-hover: #90C8F0;
+  --color-border-focus: #A8D8F8;
+  --color-accent: #90C8F0;
+  --color-accent-hover: #A8D8F8;
+  --color-accent-pressed: #70A8D0;
+  --color-accent-text: #90C8F0;
+  --color-text-primary: #D4E0EC;
+  --color-text-secondary: #8898B0;
+  --color-text-muted: #4C5C78;
+  --color-positive: #50D090;
+  --color-negative: #E87878;
+  --color-warning: #E0B448;
+  --color-info: #80C0F0;
+}
+
+/* ══ CELESTIAL ══════════════════════════════════════════ */
+
+/* ── 46. Night ───────────────────────────────────────── */
+[data-theme="night"] {
+  --color-bg-primary: #060818;
+  --color-bg-secondary: #0E1024;
+  --color-bg-tertiary: #161A30;
+  --color-bg-hover: #20243E;
+  --color-bg-input: #040614;
+  --color-border: #282E48;
+  --color-border-hover: #4060C0;
+  --color-border-focus: #5878D0;
+  --color-accent: #4060C0;
+  --color-accent-hover: #5878D0;
+  --color-accent-pressed: #3050A0;
+  --color-accent-text: #5878D8;
+  --color-text-primary: #C8D0E4;
+  --color-text-secondary: #7888B0;
+  --color-text-muted: #404C78;
+  --color-positive: #48D888;
+  --color-negative: #E87070;
+  --color-warning: #E0B040;
+  --color-info: #5878D8;
+}
+
+/* ── 47. Day ─────────────────────────────────────────── */
+[data-theme="day"] {
+  --color-bg-primary: #F8F6F0;
+  --color-bg-secondary: #F0ECE4;
+  --color-bg-tertiary: #E4E0D8;
+  --color-bg-hover: #D8D4CC;
+  --color-bg-input: #FFFEF8;
+  --color-border: #CCC8B8;
+  --color-border-hover: #D0A020;
+  --color-border-focus: #B88818;
+  --color-accent: #D0A020;
+  --color-accent-hover: #B88818;
+  --color-accent-pressed: #A07810;
+  --color-accent-text: #906810;
+  --color-text-primary: #282420;
+  --color-text-secondary: #585040;
+  --color-text-muted: #908870;
+  --color-positive: #28983C;
+  --color-negative: #C83030;
+  --color-warning: #B08018;
+  --color-info: #3070B0;
+  --shadow-panel: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* ── 48. Moon ────────────────────────────────────────── */
+[data-theme="moon"] {
+  --color-bg-primary: #10101A;
+  --color-bg-secondary: #1A1A24;
+  --color-bg-tertiary: #24242E;
+  --color-bg-hover: #2E2E38;
+  --color-bg-input: #0C0C14;
+  --color-border: #363640;
+  --color-border-hover: #C8C8D8;
+  --color-border-focus: #D8D8E8;
+  --color-accent: #C8C8D8;
+  --color-accent-hover: #D8D8E8;
+  --color-accent-pressed: #A8A8B8;
+  --color-accent-text: #C8C8D8;
+  --color-text-primary: #D4D4DC;
+  --color-text-secondary: #9090A0;
+  --color-text-muted: #585868;
+  --color-positive: #58D088;
+  --color-negative: #E07070;
+  --color-warning: #D8B040;
+  --color-info: #7898D0;
+}
+
+/* ── 49. Sun ─────────────────────────────────────────── */
+[data-theme="sun"] {
+  --color-bg-primary: #181408;
+  --color-bg-secondary: #241E10;
+  --color-bg-tertiary: #2E2818;
+  --color-bg-hover: #383220;
+  --color-bg-input: #141006;
+  --color-border: #443820;
+  --color-border-hover: #F8C830;
+  --color-border-focus: #FCD848;
+  --color-accent: #F8C830;
+  --color-accent-hover: #FCD848;
+  --color-accent-pressed: #D8A828;
+  --color-accent-text: #F8C830;
+  --color-text-primary: #E8DCC4;
+  --color-text-secondary: #B09870;
+  --color-text-muted: #706040;
+  --color-positive: #60C870;
+  --color-negative: #D86050;
+  --color-warning: #E8B030;
+  --color-info: #5090C0;
+}
+
+/* ── 50. Pluto ───────────────────────────────────────── */
+[data-theme="pluto"] {
+  --color-bg-primary: #100C14;
+  --color-bg-secondary: #18141E;
+  --color-bg-tertiary: #201C28;
+  --color-bg-hover: #2A2632;
+  --color-bg-input: #0C0810;
+  --color-border: #322C3C;
+  --color-border-hover: #B098C0;
+  --color-border-focus: #C0A8D0;
+  --color-accent: #B098C0;
+  --color-accent-hover: #C0A8D0;
+  --color-accent-pressed: #9078A0;
+  --color-accent-text: #B098C0;
+  --color-text-primary: #D4D0DC;
+  --color-text-secondary: #908898;
+  --color-text-muted: #585060;
+  --color-positive: #58D090;
+  --color-negative: #D87070;
+  --color-warning: #D8B040;
+  --color-info: #7090D0;
+}
+
+/* ── 51. Saturn ──────────────────────────────────────── */
+[data-theme="saturn"] {
+  --color-bg-primary: #141210;
+  --color-bg-secondary: #1E1C18;
+  --color-bg-tertiary: #282620;
+  --color-bg-hover: #32302A;
+  --color-bg-input: #100E0C;
+  --color-border: #3C382E;
+  --color-border-hover: #E0C888;
+  --color-border-focus: #E8D8A0;
+  --color-accent: #E0C888;
+  --color-accent-hover: #E8D8A0;
+  --color-accent-pressed: #C0A868;
+  --color-accent-text: #E0C888;
+  --color-text-primary: #DCD8CC;
+  --color-text-secondary: #A09888;
+  --color-text-muted: #686050;
+  --color-positive: #60C878;
+  --color-negative: #D86860;
+  --color-warning: #D8A838;
+  --color-info: #5890C0;
+}
+
+/* ── 52. Leo ─────────────────────────────────────────── */
+[data-theme="leo"] {
+  --color-bg-primary: #181008;
+  --color-bg-secondary: #221810;
+  --color-bg-tertiary: #2C2018;
+  --color-bg-hover: #362A20;
+  --color-bg-input: #140C06;
+  --color-border: #403420;
+  --color-border-hover: #F0A838;
+  --color-border-focus: #F8B850;
+  --color-accent: #F0A838;
+  --color-accent-hover: #F8B850;
+  --color-accent-pressed: #D09030;
+  --color-accent-text: #F0A838;
+  --color-text-primary: #E8DCC0;
+  --color-text-secondary: #B09870;
+  --color-text-muted: #706040;
+  --color-positive: #60C870;
+  --color-negative: #D86050;
+  --color-warning: #E0A030;
+  --color-info: #5090C0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   5 Star — Proven community-loved editor/IDE themes
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 53. Dracula ────────────────────────────────────────── */
+[data-theme="dracula"] {
+  --color-bg-primary: #282A36;
+  --color-bg-secondary: #2D2F3D;
+  --color-bg-tertiary: #343746;
+  --color-bg-hover: #3C3F50;
+  --color-bg-input: #22242E;
+  --color-border: #44475A;
+  --color-border-hover: #BD93F9;
+  --color-border-focus: #CAA6FF;
+  --color-accent: #BD93F9;
+  --color-accent-hover: #CAA6FF;
+  --color-accent-pressed: #A87DE0;
+  --color-accent-text: #BD93F9;
+  --color-text-primary: #F8F8F2;
+  --color-text-secondary: #BFBFB0;
+  --color-text-muted: #6272A4;
+  --color-positive: #50FA7B;
+  --color-negative: #FF5555;
+  --color-warning: #F1FA8C;
+  --color-info: #8BE9FD;
+}
+
+/* ── 54. Nord ───────────────────────────────────────────── */
+[data-theme="nord"] {
+  --color-bg-primary: #2E3440;
+  --color-bg-secondary: #333A47;
+  --color-bg-tertiary: #3B4252;
+  --color-bg-hover: #434C5E;
+  --color-bg-input: #282E39;
+  --color-border: #4C566A;
+  --color-border-hover: #88C0D0;
+  --color-border-focus: #8FBCBB;
+  --color-accent: #88C0D0;
+  --color-accent-hover: #8FBCBB;
+  --color-accent-pressed: #70A8B8;
+  --color-accent-text: #88C0D0;
+  --color-text-primary: #ECEFF4;
+  --color-text-secondary: #D8DEE9;
+  --color-text-muted: #616E88;
+  --color-positive: #A3BE8C;
+  --color-negative: #BF616A;
+  --color-warning: #EBCB8B;
+  --color-info: #81A1C1;
+}
+
+/* ── 55. One Dark Pro ───────────────────────────────────── */
+[data-theme="one-dark-pro"] {
+  --color-bg-primary: #282C34;
+  --color-bg-secondary: #2C313A;
+  --color-bg-tertiary: #333842;
+  --color-bg-hover: #3C414C;
+  --color-bg-input: #22262E;
+  --color-border: #3E4452;
+  --color-border-hover: #4AA5F0;
+  --color-border-focus: #61AFEF;
+  --color-accent: #4AA5F0;
+  --color-accent-hover: #61AFEF;
+  --color-accent-pressed: #3890D8;
+  --color-accent-text: #61AFEF;
+  --color-text-primary: #ABB2BF;
+  --color-text-secondary: #8890A0;
+  --color-text-muted: #5C6370;
+  --color-positive: #98C379;
+  --color-negative: #E06C75;
+  --color-warning: #E5C07B;
+  --color-info: #61AFEF;
+}
+
+/* ── 56. Catppuccin Mocha ───────────────────────────────── */
+[data-theme="catppuccin"] {
+  --color-bg-primary: #1E1E2E;
+  --color-bg-secondary: #232336;
+  --color-bg-tertiary: #2A2A3E;
+  --color-bg-hover: #313244;
+  --color-bg-input: #181826;
+  --color-border: #45475A;
+  --color-border-hover: #89B4FA;
+  --color-border-focus: #A0C4FF;
+  --color-accent: #89B4FA;
+  --color-accent-hover: #A0C4FF;
+  --color-accent-pressed: #7098E0;
+  --color-accent-text: #89B4FA;
+  --color-text-primary: #CDD6F4;
+  --color-text-secondary: #A6ADC8;
+  --color-text-muted: #585B70;
+  --color-positive: #A6E3A1;
+  --color-negative: #F38BA8;
+  --color-warning: #F9E2AF;
+  --color-info: #89DCEB;
+}
+
+/* ── 57. Tokyo Night ────────────────────────────────────── */
+[data-theme="tokyo-night"] {
+  --color-bg-primary: #1A1B26;
+  --color-bg-secondary: #1F202E;
+  --color-bg-tertiary: #24283B;
+  --color-bg-hover: #2C3048;
+  --color-bg-input: #16161E;
+  --color-border: #3B3D57;
+  --color-border-hover: #7AA2F7;
+  --color-border-focus: #90B4FF;
+  --color-accent: #7AA2F7;
+  --color-accent-hover: #90B4FF;
+  --color-accent-pressed: #6288D8;
+  --color-accent-text: #7AA2F7;
+  --color-text-primary: #C0CAF5;
+  --color-text-secondary: #9AA5CE;
+  --color-text-muted: #565F89;
+  --color-positive: #9ECE6A;
+  --color-negative: #F7768E;
+  --color-warning: #E0AF68;
+  --color-info: #7DCFFF;
+}
+
+/* ── 58. Gruvbox Dark ───────────────────────────────────── */
+[data-theme="gruvbox"] {
+  --color-bg-primary: #282828;
+  --color-bg-secondary: #2E2E2E;
+  --color-bg-tertiary: #3C3836;
+  --color-bg-hover: #504945;
+  --color-bg-input: #222222;
+  --color-border: #504945;
+  --color-border-hover: #83A598;
+  --color-border-focus: #98B8AA;
+  --color-accent: #83A598;
+  --color-accent-hover: #98B8AA;
+  --color-accent-pressed: #6B8C80;
+  --color-accent-text: #83A598;
+  --color-text-primary: #EBDBB2;
+  --color-text-secondary: #BDAE93;
+  --color-text-muted: #665C54;
+  --color-positive: #B8BB26;
+  --color-negative: #FB4934;
+  --color-warning: #FABD2F;
+  --color-info: #83A598;
+}
+
+/* ── 59. Solarized Dark ─────────────────────────────────── */
+[data-theme="solarized-dark"] {
+  --color-bg-primary: #002B36;
+  --color-bg-secondary: #013540;
+  --color-bg-tertiary: #073642;
+  --color-bg-hover: #0E404C;
+  --color-bg-input: #00242E;
+  --color-border: #1A4A56;
+  --color-border-hover: #268BD2;
+  --color-border-focus: #3A9DE0;
+  --color-accent: #268BD2;
+  --color-accent-hover: #3A9DE0;
+  --color-accent-pressed: #1878B8;
+  --color-accent-text: #268BD2;
+  --color-text-primary: #93A1A1;
+  --color-text-secondary: #839496;
+  --color-text-muted: #586E75;
+  --color-positive: #859900;
+  --color-negative: #DC322F;
+  --color-warning: #B58900;
+  --color-info: #2AA198;
+}
+
+/* ── 60. Monokai ────────────────────────────────────────── */
+[data-theme="monokai"] {
+  --color-bg-primary: #272822;
+  --color-bg-secondary: #2D2E28;
+  --color-bg-tertiary: #3E3D32;
+  --color-bg-hover: #4A493C;
+  --color-bg-input: #22231E;
+  --color-border: #4A493C;
+  --color-border-hover: #66D9EF;
+  --color-border-focus: #80E2F4;
+  --color-accent: #66D9EF;
+  --color-accent-hover: #80E2F4;
+  --color-accent-pressed: #4CC0D6;
+  --color-accent-text: #66D9EF;
+  --color-text-primary: #F8F8F2;
+  --color-text-secondary: #C8C8B8;
+  --color-text-muted: #75715E;
+  --color-positive: #A6E22E;
+  --color-negative: #F92672;
+  --color-warning: #E6DB74;
+  --color-info: #66D9EF;
+}
+
+/* ── 61. Material Palenight ─────────────────────────────── */
+[data-theme="palenight"] {
+  --color-bg-primary: #292D3E;
+  --color-bg-secondary: #2F3345;
+  --color-bg-tertiary: #343850;
+  --color-bg-hover: #3C405C;
+  --color-bg-input: #242838;
+  --color-border: #424668;
+  --color-border-hover: #AB47BC;
+  --color-border-focus: #C05ACE;
+  --color-accent: #AB47BC;
+  --color-accent-hover: #C05ACE;
+  --color-accent-pressed: #9038A0;
+  --color-accent-text: #C792EA;
+  --color-text-primary: #A6ACCD;
+  --color-text-secondary: #8890B0;
+  --color-text-muted: #676E95;
+  --color-positive: #C3E88D;
+  --color-negative: #FF5370;
+  --color-warning: #FFCB6B;
+  --color-info: #82AAFF;
+}
+
+/* ── 62. Rosé Pine ──────────────────────────────────────── */
+[data-theme="rose-pine"] {
+  --color-bg-primary: #191724;
+  --color-bg-secondary: #1F1D2E;
+  --color-bg-tertiary: #26233A;
+  --color-bg-hover: #2E2B44;
+  --color-bg-input: #15131E;
+  --color-border: #393552;
+  --color-border-hover: #C4A7E7;
+  --color-border-focus: #D0B8F0;
+  --color-accent: #C4A7E7;
+  --color-accent-hover: #D0B8F0;
+  --color-accent-pressed: #A88CC8;
+  --color-accent-text: #C4A7E7;
+  --color-text-primary: #E0DEF4;
+  --color-text-secondary: #908CAA;
+  --color-text-muted: #6E6A86;
+  --color-positive: #9CCFD8;
+  --color-negative: #EB6F92;
+  --color-warning: #F6C177;
+  --color-info: #9CCFD8;
+}
+
+/* ── 63. Kanagawa ───────────────────────────────────────── */
+[data-theme="kanagawa"] {
+  --color-bg-primary: #1F1F28;
+  --color-bg-secondary: #252530;
+  --color-bg-tertiary: #2A2A37;
+  --color-bg-hover: #323240;
+  --color-bg-input: #1A1A22;
+  --color-border: #3A3A4C;
+  --color-border-hover: #7E9CD8;
+  --color-border-focus: #90ACE4;
+  --color-accent: #7E9CD8;
+  --color-accent-hover: #90ACE4;
+  --color-accent-pressed: #6680B8;
+  --color-accent-text: #7E9CD8;
+  --color-text-primary: #DCD7BA;
+  --color-text-secondary: #B8B4A0;
+  --color-text-muted: #727169;
+  --color-positive: #98BB6C;
+  --color-negative: #E82424;
+  --color-warning: #E6C384;
+  --color-info: #7FB4CA;
+}
+
+/* ── 64. Everforest ─────────────────────────────────────── */
+[data-theme="everforest"] {
+  --color-bg-primary: #2D353B;
+  --color-bg-secondary: #323C42;
+  --color-bg-tertiary: #3A464C;
+  --color-bg-hover: #445058;
+  --color-bg-input: #272F34;
+  --color-border: #4A555C;
+  --color-border-hover: #A7C080;
+  --color-border-focus: #B8D090;
+  --color-accent: #A7C080;
+  --color-accent-hover: #B8D090;
+  --color-accent-pressed: #8EA868;
+  --color-accent-text: #A7C080;
+  --color-text-primary: #D3C6AA;
+  --color-text-secondary: #B0A490;
+  --color-text-muted: #7A8478;
+  --color-positive: #A7C080;
+  --color-negative: #E67E80;
+  --color-warning: #DBBC7F;
+  --color-info: #7FBBB3;
+}
+
+/* ── 65. Ayu Dark ───────────────────────────────────────── */
+[data-theme="ayu-dark"] {
+  --color-bg-primary: #0B0E14;
+  --color-bg-secondary: #10141C;
+  --color-bg-tertiary: #161B25;
+  --color-bg-hover: #1E2430;
+  --color-bg-input: #080A0E;
+  --color-border: #1C2230;
+  --color-border-hover: #E6B450;
+  --color-border-focus: #F0C468;
+  --color-accent: #E6B450;
+  --color-accent-hover: #F0C468;
+  --color-accent-pressed: #C89A38;
+  --color-accent-text: #E6B450;
+  --color-text-primary: #BFBDB6;
+  --color-text-secondary: #8B8A84;
+  --color-text-muted: #565B66;
+  --color-positive: #7FD962;
+  --color-negative: #D95757;
+  --color-warning: #E6B450;
+  --color-info: #59C2FF;
+}
+
+/* ── 66. Synthwave '84 ──────────────────────────────────── */
+[data-theme="synthwave"] {
+  --color-bg-primary: #262335;
+  --color-bg-secondary: #2C293C;
+  --color-bg-tertiary: #342F48;
+  --color-bg-hover: #3E3854;
+  --color-bg-input: #201E2E;
+  --color-border: #443E58;
+  --color-border-hover: #FF7EDB;
+  --color-border-focus: #FF98E4;
+  --color-accent: #FF7EDB;
+  --color-accent-hover: #FF98E4;
+  --color-accent-pressed: #E060C0;
+  --color-accent-text: #FF7EDB;
+  --color-text-primary: #E4D8F0;
+  --color-text-secondary: #B0A0C8;
+  --color-text-muted: #6C5890;
+  --color-positive: #72F1B8;
+  --color-negative: #FE4450;
+  --color-warning: #FEDE5D;
+  --color-info: #36F9F6;
+}
+
+/* ── 67. Vesper ─────────────────────────────────────────── */
+[data-theme="vesper"] {
+  --color-bg-primary: #101010;
+  --color-bg-secondary: #161616;
+  --color-bg-tertiary: #1E1E1E;
+  --color-bg-hover: #282828;
+  --color-bg-input: #0C0C0C;
+  --color-border: #2A2A2A;
+  --color-border-hover: #FFC799;
+  --color-border-focus: #FFD4AE;
+  --color-accent: #FFC799;
+  --color-accent-hover: #FFD4AE;
+  --color-accent-pressed: #E0A878;
+  --color-accent-text: #FFC799;
+  --color-text-primary: #D4D4D4;
+  --color-text-secondary: #999999;
+  --color-text-muted: #555555;
+  --color-positive: #6ABF69;
+  --color-negative: #E05050;
+  --color-warning: #D8A84C;
+  --color-info: #6098C8;
+}
+
+/* ── 68. Poimandres ─────────────────────────────────────── */
+[data-theme="poimandres"] {
+  --color-bg-primary: #1B1E28;
+  --color-bg-secondary: #202430;
+  --color-bg-tertiary: #262A38;
+  --color-bg-hover: #2E3342;
+  --color-bg-input: #161920;
+  --color-border: #343A4C;
+  --color-border-hover: #ADD7FF;
+  --color-border-focus: #C0E2FF;
+  --color-accent: #ADD7FF;
+  --color-accent-hover: #C0E2FF;
+  --color-accent-pressed: #90BCE0;
+  --color-accent-text: #ADD7FF;
+  --color-text-primary: #E4F0FB;
+  --color-text-secondary: #A6ACCD;
+  --color-text-muted: #5E6688;
+  --color-positive: #5DE4C7;
+  --color-negative: #D0679D;
+  --color-warning: #FFFAC2;
+  --color-info: #89DDFF;
+}
+
+/* ── 69. Vitesse Dark ───────────────────────────────────── */
+[data-theme="vitesse"] {
+  --color-bg-primary: #121212;
+  --color-bg-secondary: #181818;
+  --color-bg-tertiary: #222222;
+  --color-bg-hover: #2C2C2C;
+  --color-bg-input: #0E0E0E;
+  --color-border: #2C2C2C;
+  --color-border-hover: #4D9375;
+  --color-border-focus: #5EA888;
+  --color-accent: #4D9375;
+  --color-accent-hover: #5EA888;
+  --color-accent-pressed: #3C7A5E;
+  --color-accent-text: #4D9375;
+  --color-text-primary: #DBD7CA;
+  --color-text-secondary: #A0A0A0;
+  --color-text-muted: #5C5C5C;
+  --color-positive: #4D9375;
+  --color-negative: #CB7676;
+  --color-warning: #E6CC77;
+  --color-info: #6394BF;
+}
+
+/* ── 70. GitHub Dark Dimmed ─────────────────────────────── */
+[data-theme="github-dimmed"] {
+  --color-bg-primary: #22272E;
+  --color-bg-secondary: #272C34;
+  --color-bg-tertiary: #2D333B;
+  --color-bg-hover: #363D48;
+  --color-bg-input: #1C2028;
+  --color-border: #444C56;
+  --color-border-hover: #539BF5;
+  --color-border-focus: #6CB0FF;
+  --color-accent: #539BF5;
+  --color-accent-hover: #6CB0FF;
+  --color-accent-pressed: #3C80D8;
+  --color-accent-text: #539BF5;
+  --color-text-primary: #ADBAC7;
+  --color-text-secondary: #8B949E;
+  --color-text-muted: #545D68;
+  --color-positive: #57AB5A;
+  --color-negative: #E5534B;
+  --color-warning: #DAAA3F;
+  --color-info: #539BF5;
+}

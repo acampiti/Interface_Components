@@ -1,0 +1,29 @@
+.tab-bar {
+  display: flex;
+  gap: 0;
+  height: 100%;
+  align-items: stretch;
+}
+
+.tab-bar-item {
+  padding: 0 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.tab-bar-item:hover {
+  color: var(--color-text-primary);
+}
+
+.tab-bar-item.active {
+  color: var(--color-accent-text);
+  border-bottom-color: var(--color-accent-text);
+}

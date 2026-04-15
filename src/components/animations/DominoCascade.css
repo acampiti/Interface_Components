@@ -1,0 +1,42 @@
+.domino-cascade {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  width: 120px;
+  height: 60px;
+  margin: auto;
+}
+
+.domino-cascade__piece {
+  width: 8px;
+  height: 28px;
+  border-radius: 2px;
+  background-color: var(--color-accent-text);
+  transform-origin: bottom right;
+  animation: dominoFall 2.5s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.domino-cascade__piece--0 { animation-delay: 0s;    opacity: 0.75; }
+.domino-cascade__piece--1 { animation-delay: 0.12s; opacity: 0.82; }
+.domino-cascade__piece--2 { animation-delay: 0.24s; opacity: 0.9; }
+.domino-cascade__piece--3 { animation-delay: 0.36s; opacity: 1; }
+.domino-cascade__piece--4 { animation-delay: 0.48s; opacity: 0.9; }
+.domino-cascade__piece--5 { animation-delay: 0.60s; opacity: 0.82; }
+.domino-cascade__piece--6 { animation-delay: 0.72s; opacity: 0.75; }
+
+@keyframes dominoFall {
+  0%, 5% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(70deg);
+  }
+  60% {
+    transform: rotate(70deg);
+  }
+  90%, 100% {
+    transform: rotate(0deg);
+  }
+}

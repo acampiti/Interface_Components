@@ -1,0 +1,82 @@
+.particle-swirl {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+
+/* Wrapper handles rotation offset, dot handles radial animation */
+.particle-swirl__orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.particle-swirl__orbit--0 { transform: rotate(0deg); }
+.particle-swirl__orbit--1 { transform: rotate(45deg); }
+.particle-swirl__orbit--2 { transform: rotate(90deg); }
+.particle-swirl__orbit--3 { transform: rotate(135deg); }
+.particle-swirl__orbit--4 { transform: rotate(180deg); }
+.particle-swirl__orbit--5 { transform: rotate(225deg); }
+.particle-swirl__orbit--6 { transform: rotate(270deg); }
+.particle-swirl__orbit--7 { transform: rotate(315deg); }
+
+.particle-swirl__dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  top: -2.5px;
+  left: -2.5px;
+  animation: swirl 3s ease-in-out infinite;
+}
+
+/* Alternate colors */
+.particle-swirl__dot--0,
+.particle-swirl__dot--2,
+.particle-swirl__dot--4,
+.particle-swirl__dot--6 {
+  background-color: var(--color-accent);
+}
+
+.particle-swirl__dot--1,
+.particle-swirl__dot--3,
+.particle-swirl__dot--5,
+.particle-swirl__dot--7 {
+  background-color: var(--color-info);
+}
+
+/* Stagger delays */
+.particle-swirl__dot--0 { animation-delay: 0s; }
+.particle-swirl__dot--1 { animation-delay: 0.25s; }
+.particle-swirl__dot--2 { animation-delay: 0.5s; }
+.particle-swirl__dot--3 { animation-delay: 0.75s; }
+.particle-swirl__dot--4 { animation-delay: 1s; }
+.particle-swirl__dot--5 { animation-delay: 1.25s; }
+.particle-swirl__dot--6 { animation-delay: 1.5s; }
+.particle-swirl__dot--7 { animation-delay: 1.75s; }
+
+@keyframes swirl {
+  0% {
+    transform: translateX(40px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(5px) scale(0.5);
+    opacity: 0.6;
+  }
+  51% {
+    transform: translateX(5px) scale(1.5);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(40px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(40px) scale(1);
+    opacity: 1;
+  }
+}

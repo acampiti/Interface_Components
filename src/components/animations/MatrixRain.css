@@ -1,0 +1,50 @@
+.matrix-rain {
+  width: 160px;
+  height: 120px;
+  margin: 0 auto;
+  display: flex;
+  gap: 4px;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+  border-radius: 4px;
+  padding: 4px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.matrix-rain__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.matrix-rain__char {
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--color-accent-text);
+  opacity: 0;
+  animation: matrixFall 2s linear infinite;
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}

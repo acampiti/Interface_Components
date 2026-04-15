@@ -1,0 +1,45 @@
+.gear-mesh {
+  position: relative;
+  width: 120px;
+  height: 80px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gear-mesh__gear {
+  position: absolute;
+}
+
+.gear-mesh__gear--1 {
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spinCW 4s linear infinite;
+}
+
+.gear-mesh__gear--2 {
+  left: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spinCCW 3s linear infinite;
+}
+
+@keyframes spinCW {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes spinCCW {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(-360deg);
+  }
+}

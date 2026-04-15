@@ -1,0 +1,89 @@
+.range-slider {
+  padding: 8px 0 28px 0;
+  user-select: none;
+}
+
+.range-track-area {
+  position: relative;
+  height: 20px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.range-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--color-bg-tertiary);
+  border-radius: 2px;
+}
+
+.range-track-fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.range-stop {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-bg-tertiary);
+  border: 2px solid var(--color-bg-primary);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.range-stop--active {
+  background: var(--color-accent);
+}
+
+.range-thumb {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  pointer-events: none;
+  transition: box-shadow 0.12s;
+}
+
+.range-track-area:active .range-thumb {
+  box-shadow: 0 0 0 4px rgba(74, 158, 255, 0.25);
+}
+
+.range-labels {
+  position: relative;
+  height: 20px;
+  margin-top: 4px;
+}
+
+.range-label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  transition: color 0.12s;
+}
+
+.range-label--active {
+  color: var(--color-accent);
+  font-weight: 600;
+}

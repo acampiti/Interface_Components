@@ -1,0 +1,36 @@
+.kbd-root {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kbd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kbd-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  min-width: 24px;
+  height: 24px;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: monospace;
+  color: var(--color-text-secondary);
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.kbd-sep {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  user-select: none;
+}

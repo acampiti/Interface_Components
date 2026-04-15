@@ -1,0 +1,109 @@
+.showcase-page {
+  padding: 24px 32px;
+  max-width: 1200px;
+}
+
+.showcase-page-header h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.showcase-page-header p {
+  margin: 0 0 24px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.showcase-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.showcase-group {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: visible;
+}
+
+.showcase-group-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.showcase-group-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.showcase-group-header h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.showcase-group-header p {
+  margin: 4px 0 0;
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.showcase-group-content {
+  padding: 16px;
+}
+
+/* ── Help icon (?  with hover tooltip) ───────────────── */
+
+.showcase-help-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-text-muted);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: help;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.showcase-help-icon:hover {
+  border-color: var(--color-accent-text);
+  color: var(--color-accent-text);
+}
+
+.showcase-help-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-accent-text);
+  white-space: nowrap;
+  z-index: 200;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.showcase-help-icon:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}

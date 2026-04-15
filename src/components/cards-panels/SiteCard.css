@@ -1,0 +1,114 @@
+.site-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 280px;
+  padding: 16px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s, background 0.15s;
+  cursor: default;
+}
+
+.site-card:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-bg-tertiary);
+}
+
+.site-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-card__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-card__status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.site-card__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.site-card__status-dot--online {
+  background: var(--color-positive);
+}
+
+.site-card__status-dot--offline {
+  background: var(--color-negative);
+}
+
+.site-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-card__meta-row {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.site-card__uptime-bar {
+  height: 4px;
+  background: var(--color-bg-input);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.site-card__uptime-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-positive);
+  transition: width 0.3s ease;
+}
+
+.site-card__uptime-fill--low {
+  background: var(--color-negative);
+}
+
+.site-card__uptime-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.site-card__stats {
+  display: flex;
+  gap: 16px;
+  padding-top: 6px;
+  border-top: 1px solid var(--color-border);
+}
+
+.site-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.site-card__stat-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.site-card__stat-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}

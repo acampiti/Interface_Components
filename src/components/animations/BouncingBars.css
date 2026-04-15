@@ -1,0 +1,81 @@
+.bouncing-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  width: 60px;
+  height: 80px;
+  margin: auto;
+}
+
+.bouncing-bars__bar {
+  width: 8px;
+  border-radius: 2px;
+  background-color: var(--color-accent);
+  animation: barBounce1 1.2s ease-in-out infinite;
+}
+
+.bouncing-bars__bar--1 {
+  opacity: 0.6;
+  animation-name: barBounce1;
+  animation-delay: 0s;
+}
+
+.bouncing-bars__bar--2 {
+  opacity: 0.7;
+  animation-name: barBounce2;
+  animation-delay: 0.15s;
+}
+
+.bouncing-bars__bar--3 {
+  opacity: 0.8;
+  animation-name: barBounce3;
+  animation-delay: 0.3s;
+}
+
+.bouncing-bars__bar--4 {
+  opacity: 0.9;
+  animation-name: barBounce4;
+  animation-delay: 0.45s;
+}
+
+.bouncing-bars__bar--5 {
+  opacity: 1;
+  animation-name: barBounce5;
+  animation-delay: 0.6s;
+}
+
+@keyframes barBounce1 {
+  0%, 100% { height: 15px; }
+  25% { height: 55px; }
+  50% { height: 20px; }
+  75% { height: 40px; }
+}
+
+@keyframes barBounce2 {
+  0%, 100% { height: 20px; }
+  25% { height: 60px; }
+  50% { height: 15px; }
+  75% { height: 45px; }
+}
+
+@keyframes barBounce3 {
+  0%, 100% { height: 18px; }
+  25% { height: 50px; }
+  50% { height: 25px; }
+  75% { height: 55px; }
+}
+
+@keyframes barBounce4 {
+  0%, 100% { height: 22px; }
+  25% { height: 45px; }
+  50% { height: 18px; }
+  75% { height: 60px; }
+}
+
+@keyframes barBounce5 {
+  0%, 100% { height: 15px; }
+  25% { height: 58px; }
+  50% { height: 22px; }
+  75% { height: 35px; }
+}

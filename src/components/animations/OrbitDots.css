@@ -1,0 +1,72 @@
+.orbit-dots {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+}
+
+.orbit-dots__track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+
+.orbit-dots__track--1 {
+  animation: orbit 2s linear infinite;
+}
+
+.orbit-dots__track--2 {
+  animation: orbit 3s linear infinite;
+}
+
+.orbit-dots__track--3 {
+  animation: orbit 4s linear infinite;
+}
+
+.orbit-dots__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: -4px;
+  left: -4px;
+  animation: orbitPulse 2s ease-in-out infinite;
+}
+
+.orbit-dots__dot--1 {
+  background-color: var(--color-accent);
+  transform: translateX(20px);
+}
+
+.orbit-dots__dot--2 {
+  background-color: var(--color-info);
+  transform: translateX(32px);
+  animation-delay: 0.5s;
+}
+
+.orbit-dots__dot--3 {
+  background-color: var(--color-positive);
+  transform: translateX(44px);
+  animation-delay: 1s;
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitPulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}

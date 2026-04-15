@@ -1,0 +1,59 @@
+.signal-rings {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signal-rings__ring {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-accent-text);
+  border-radius: 50%;
+  animation: ringExpand 1.8s ease-out infinite;
+}
+
+.signal-rings__ring--0 {
+  animation-delay: 0s;
+}
+
+.signal-rings__ring--1 {
+  animation-delay: 0.6s;
+}
+
+.signal-rings__ring--2 {
+  animation-delay: 1.2s;
+}
+
+.signal-rings__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent-text);
+  animation: dotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ringExpand {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
