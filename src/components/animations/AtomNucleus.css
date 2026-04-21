@@ -1,0 +1,59 @@
+/*
+ * AtomNucleus — nucleus with electrons following true elliptical orbits
+ *
+ * 160×160 SVG. Electrons use <animateMotion> + <mpath> to trace the
+ * exact ellipse path. Nucleus cluster gently pulses.
+ *
+ * Custom properties: --color-accent, --color-accent-text,
+ *   --color-bg-primary, --color-border, --color-text-muted
+ */
+
+.atom-nucleus {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+}
+
+.atom-nucleus__svg {
+  display: block;
+}
+
+/* ─── Orbit rings ───────────────────────────────────────────────────────── */
+
+.atom-nucleus__orbit-ring {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 0.8;
+  opacity: 0.5;
+}
+
+/* ─── Electrons ─────────────────────────────────────────────────────────── */
+
+.atom-nucleus__electron {
+  fill: var(--color-accent-text);
+  filter: drop-shadow(0 0 4px var(--color-accent-text))
+          drop-shadow(0 0 8px var(--color-accent));
+}
+
+/* ─── Nucleus core ──────────────────────────────────────────────────────── */
+
+.atom-nucleus__core-group {
+  animation: nucleusPulse 2s ease-in-out infinite;
+  transform-origin: 80px 80px;
+}
+
+.atom-nucleus__proton {
+  fill: var(--color-accent);
+  filter: drop-shadow(0 0 3px var(--color-accent));
+}
+
+.atom-nucleus__neutron {
+  fill: var(--color-text-muted);
+  filter: drop-shadow(0 0 2px var(--color-text-muted));
+}
+
+@keyframes nucleusPulse {
+  0%, 100% { transform: scale(0.333); }
+  50%      { transform: scale(0.366); }
+}

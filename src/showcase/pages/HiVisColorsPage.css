@@ -1,0 +1,259 @@
+/* ── Color row table ───────────────────────────────── */
+
+.fonts-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fonts-row {
+  display: grid;
+  grid-template-columns: 56px 220px 1fr 280px;
+  gap: 16px;
+  padding: 12px;
+  background: #0a0a0a;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  align-items: center;
+}
+
+.fonts-row__swatch {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.fonts-row__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fonts-row__name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.fonts-row__hex {
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.fonts-row__notes {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.fonts-row__samples {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fonts-row__sample--lg {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.fonts-row__sample--md {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.fonts-row__sample--mono {
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+/* ── Stacked comparison ────────────────────────────── */
+
+.fonts-stack {
+  background: #050505;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fonts-stack--light {
+  background: #ffffff;
+  border-color: #d0d0d0;
+}
+
+.fonts-stack__line {
+  display: grid;
+  grid-template-columns: 80px 130px 1fr;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.fonts-stack__hex {
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.fonts-stack__name {
+  font-weight: 600;
+}
+
+.fonts-stack__text {
+  font-size: 13px;
+}
+
+/* ── Trading numbers ───────────────────────────────── */
+
+.fonts-numbers {
+  background: #0a0a0a;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fonts-numbers__row {
+  display: grid;
+  grid-template-columns: 140px 110px 90px 90px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+}
+
+.fonts-numbers__label {
+  font-family: inherit;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.fonts-numbers__big {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.fonts-numbers__delta,
+.fonts-numbers__pct {
+  font-size: 13px;
+  text-align: right;
+}
+
+.fonts-numbers__vol {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* ── Companion colors (inline in row) ───────────────── */
+
+.fonts-row__companions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 1px solid var(--color-border);
+  padding-left: 12px;
+}
+
+.fonts-row__companions-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  margin-bottom: 2px;
+}
+
+.fonts-companion {
+  display: grid;
+  grid-template-columns: 14px 80px 1fr;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+}
+
+.fonts-companion__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.fonts-companion__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.fonts-companion__name {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.fonts-companion__hex {
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 9px;
+  color: var(--color-text-muted);
+}
+
+.fonts-companion__sample {
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Pairing preview cards ──────────────────────────── */
+
+.fonts-pairings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+}
+
+.fonts-pairing {
+  background: #050505;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.fonts-pairing__header {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+.fonts-pairing__row {
+  margin-bottom: 12px;
+}
+
+.fonts-pairing__row:last-child {
+  margin-bottom: 0;
+}
+
+.fonts-pairing__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.fonts-pairing__body {
+  font-size: 12px;
+  line-height: 1.5;
+}

@@ -1,0 +1,139 @@
+/* ── DOMTable — high-performance updatable grid ────────── */
+
+.dom-table-wrap {
+  position: relative;
+  overflow: auto;
+  border: 1px solid var(--dom-grid-color, var(--color-border));
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+}
+
+.dom-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: max-content;
+  min-width: 100%;
+}
+
+/* ── Header ──────────────────────────────────────────── */
+
+.dom-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.dom-table th {
+  position: relative;
+  padding: 0;
+  background: var(--color-bg-tertiary);
+  border-bottom: 2px solid var(--dom-grid-color, var(--color-border));
+  border-right: 1px solid var(--dom-grid-color, var(--color-border));
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dom-table th:last-child {
+  border-right: none;
+}
+
+.dom-th-content {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  min-height: 32px;
+}
+
+/* ── Column resize handle ────────────────────────────── */
+
+.dom-col-resize {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  width: 7px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 3;
+}
+
+.dom-col-resize::after {
+  content: "";
+  position: absolute;
+  top: 25%;
+  right: 3px;
+  width: 1px;
+  height: 50%;
+  background: var(--color-text-muted);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.dom-col-resize:hover::after,
+.dom-col-resize.dragging::after {
+  opacity: 1;
+  background: var(--color-accent-text);
+}
+
+/* ── Row resize handle ───────────────────────────────── */
+
+.dom-row-resize {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  cursor: row-resize;
+  z-index: 1;
+}
+
+/* ── Cells ───────────────────────────────────────────── */
+
+.dom-table td {
+  position: relative;
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--dom-grid-color, var(--color-border));
+  border-right: 1px solid var(--dom-grid-color, var(--color-border));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: none; /* no transitions for perf */
+}
+
+.dom-table td:last-child {
+  border-right: none;
+}
+
+.dom-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Hover row highlight ─────────────────────────────── */
+
+.dom-table tbody tr:hover td {
+  background: var(--color-bg-hover) !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+
+.dom-table-wrap::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.dom-table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dom-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.dom-table-wrap::-webkit-scrollbar-corner {
+  background: transparent;
+}

@@ -1,0 +1,25 @@
+/* AnimationsPage — 3-per-row grid layout */
+
+.animations-page {
+  padding: 24px 32px;
+  max-width: 1200px;
+}
+
+.animations-page__header h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.animations-page__header p {
+  margin: 0 0 24px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.animations-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}

@@ -1,0 +1,346 @@
+/* ================================================================
+   StickBackflip — proper skeletal hierarchy
+
+   Nested joint chain so rotations cascade naturally:
+     sbf-jump (Y translation for arc)
+       sbf-body (full-body rotation for the flip)
+         sbf-torso (the visible spine line)
+         sbf-head
+         sbf-shoulder → sbf-upper-arm → sbf-forearm
+         sbf-hip → sbf-thigh → sbf-shin
+
+   Timeline (3s cycle):
+     0-12%   stand idle
+     12-22%  crouch
+     22-32%  launch upward
+     32-68%  airborne backflip (full -360°)
+     68-82%  descend + land
+     82-100% recover to stand
+   ================================================================ */
+
+:root {
+  --sbf-limb: var(--color-accent-text);
+  --sbf-thick: 3px;
+}
+
+/* ── Container ─────────────────────────────────────────── */
+.sbf {
+  position: relative;
+  width: 160px;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* ── Ground & shadow ───────────────────────────────────── */
+.sbf-ground {
+  position: absolute;
+  bottom: 16px;
+  left: 15px;
+  right: 15px;
+  height: 2px;
+  background: var(--color-border);
+  border-radius: 1px;
+}
+
+.sbf-shadow {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 30px;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 50%;
+  opacity: 0.5;
+  transform: translateX(-50%);
+  animation: sbfShadow 3s ease-in-out infinite;
+}
+
+/* ── Jump wrapper (vertical translation) ───────────────── */
+.sbf-jump {
+  position: absolute;
+  bottom: 18px;      /* sits on ground line */
+  left: 50%;
+  width: 0;
+  height: 0;
+  animation: sbfJump 3s ease-in-out infinite;
+}
+
+/* ── Body pivot (rotation center = hip) ────────────────── */
+/* Origin at 0,0 which is the hip point */
+.sbf-body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  animation: sbfBodySpin 3s ease-in-out infinite;
+}
+
+/* ── Torso (spine line going UP from hip) ──────────────── */
+.sbf-torso {
+  position: absolute;
+  width: var(--sbf-thick);
+  height: 36px;
+  left: calc(var(--sbf-thick) / -2);
+  bottom: 0;             /* bottom at hip (0,0), extends upward */
+  background: var(--sbf-limb);
+  border-radius: 1px;
+}
+
+/* ── Head ──────────────────────────────────────────────── */
+.sbf-head {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: var(--sbf-thick) solid var(--sbf-limb);
+  border-radius: 50%;
+  background: transparent;
+  left: -8px;
+  bottom: 38px;          /* just above torso top */
+}
+
+/* ================================================================
+   ARMS — nested: shoulder (anchor) → upper-arm → forearm
+   ================================================================ */
+
+/* Shoulder anchor: sits at top of torso */
+.sbf-shoulder {
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 32px;          /* near top of torso */
+  left: 0;
+}
+
+/* Upper arm: pivots from shoulder (top end) */
+.sbf-upper-arm {
+  position: absolute;
+  width: var(--sbf-thick);
+  height: 20px;
+  left: calc(var(--sbf-thick) / -2);
+  top: 0;
+  background: var(--sbf-limb);
+  border-radius: 1px;
+  transform-origin: center top;
+}
+
+.sbf-upper-arm--l { animation: sbfArmL 3s ease-in-out infinite; }
+.sbf-upper-arm--r { animation: sbfArmR 3s ease-in-out infinite; }
+
+/* Forearm: pivots from elbow (top = parent's bottom) */
+.sbf-forearm {
+  position: absolute;
+  width: var(--sbf-thick);
+  height: 18px;
+  left: calc(var(--sbf-thick) / -2);
+  top: 100%;             /* starts at bottom of upper arm = elbow */
+  background: var(--sbf-limb);
+  border-radius: 1px;
+  transform-origin: center top;
+}
+
+.sbf-forearm--l { animation: sbfForearmL 3s ease-in-out infinite; }
+.sbf-forearm--r { animation: sbfForearmR 3s ease-in-out infinite; }
+
+/* ================================================================
+   LEGS — nested: hip (anchor) → thigh → shin
+   ================================================================ */
+
+/* Hip anchor: at the body origin (0,0) */
+.sbf-hip {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+}
+
+/* Thigh: pivots from hip (top end) */
+.sbf-thigh {
+  position: absolute;
+  width: var(--sbf-thick);
+  height: 24px;
+  left: calc(var(--sbf-thick) / -2);
+  top: 0;
+  background: var(--sbf-limb);
+  border-radius: 1px;
+  transform-origin: center top;
+}
+
+.sbf-thigh--l { animation: sbfThighL 3s ease-in-out infinite; }
+.sbf-thigh--r { animation: sbfThighR 3s ease-in-out infinite; }
+
+/* Shin: pivots from knee (top = parent's bottom) */
+.sbf-shin {
+  position: absolute;
+  width: var(--sbf-thick);
+  height: 22px;
+  left: calc(var(--sbf-thick) / -2);
+  top: 100%;             /* starts at bottom of thigh = knee */
+  background: var(--sbf-limb);
+  border-radius: 1px;
+  transform-origin: center top;
+}
+
+.sbf-shin--l { animation: sbfShinL 3s ease-in-out infinite; }
+.sbf-shin--r { animation: sbfShinR 3s ease-in-out infinite; }
+
+
+/* ================================================================
+   KEYFRAMES
+   ================================================================ */
+
+/* Shadow shrinks during jump, expands on land */
+@keyframes sbfShadow {
+  0%, 12%   { width: 30px; opacity: 0.5; }
+  22%       { width: 20px; opacity: 0.4; }
+  35%       { width: 6px;  opacity: 0.15; }
+  50%       { width: 4px;  opacity: 0.1; }
+  68%       { width: 6px;  opacity: 0.15; }
+  78%       { width: 34px; opacity: 0.6; }   /* impact */
+  88%       { width: 30px; opacity: 0.5; }
+  100%      { width: 30px; opacity: 0.5; }
+}
+
+/* Vertical arc: stand → crouch → jump → peak → land */
+@keyframes sbfJump {
+  0%, 12%   { transform: translateX(-50%) translateY(0); }
+  22%       { transform: translateX(-50%) translateY(8px); }    /* crouch dip */
+  32%       { transform: translateX(-50%) translateY(-60px); }  /* launch */
+  50%       { transform: translateX(-50%) translateY(-85px); }  /* peak */
+  68%       { transform: translateX(-50%) translateY(-20px); }  /* descend */
+  78%       { transform: translateX(-50%) translateY(5px); }    /* land compress */
+  88%       { transform: translateX(-50%) translateY(0); }
+  100%      { transform: translateX(-50%) translateY(0); }
+}
+
+/* Full body rotation: -360° backflip while airborne */
+@keyframes sbfBodySpin {
+  0%, 22%   { transform: rotate(0deg); }
+  28%       { transform: rotate(-15deg); }      /* lean back into flip */
+  32%       { transform: rotate(-40deg); }
+  42%       { transform: rotate(-150deg); }
+  50%       { transform: rotate(-200deg); }
+  58%       { transform: rotate(-280deg); }
+  68%       { transform: rotate(-360deg); }     /* full rotation done before landing */
+  78%       { transform: rotate(-360deg); }
+  100%      { transform: rotate(-360deg); }
+}
+
+/* ── Left arm: hang → sweep up → tuck → extend ─────── */
+@keyframes sbfArmL {
+  0%, 12%   { transform: rotate(10deg); }           /* hang slightly forward */
+  22%       { transform: rotate(20deg); }            /* crouch: arms forward */
+  28%       { transform: rotate(-60deg); }           /* swing up overhead */
+  32%       { transform: rotate(-120deg); }          /* fully overhead */
+  40%       { transform: rotate(-40deg); }           /* tuck toward body */
+  50%       { transform: rotate(-30deg); }           /* tight tuck at peak */
+  60%       { transform: rotate(-50deg); }
+  68%       { transform: rotate(-10deg); }           /* open up */
+  78%       { transform: rotate(20deg); }            /* land: arms forward */
+  88%       { transform: rotate(10deg); }
+  100%      { transform: rotate(10deg); }
+}
+
+@keyframes sbfArmR {
+  0%, 12%   { transform: rotate(-10deg); }
+  22%       { transform: rotate(-20deg); }
+  28%       { transform: rotate(60deg); }
+  32%       { transform: rotate(120deg); }
+  40%       { transform: rotate(40deg); }
+  50%       { transform: rotate(30deg); }
+  60%       { transform: rotate(50deg); }
+  68%       { transform: rotate(10deg); }
+  78%       { transform: rotate(-20deg); }
+  88%       { transform: rotate(-10deg); }
+  100%      { transform: rotate(-10deg); }
+}
+
+/* ── Forearms: follow upper arm + elbow bend ───────── */
+@keyframes sbfForearmL {
+  0%, 12%   { transform: rotate(0deg); }
+  22%       { transform: rotate(-15deg); }           /* slight bend */
+  28%       { transform: rotate(-40deg); }           /* swinging */
+  32%       { transform: rotate(-60deg); }           /* overhead bend */
+  40%       { transform: rotate(-90deg); }           /* tight tuck */
+  50%       { transform: rotate(-100deg); }          /* max tuck */
+  60%       { transform: rotate(-70deg); }
+  68%       { transform: rotate(-20deg); }
+  78%       { transform: rotate(-10deg); }
+  88%       { transform: rotate(0deg); }
+  100%      { transform: rotate(0deg); }
+}
+
+@keyframes sbfForearmR {
+  0%, 12%   { transform: rotate(0deg); }
+  22%       { transform: rotate(15deg); }
+  28%       { transform: rotate(40deg); }
+  32%       { transform: rotate(60deg); }
+  40%       { transform: rotate(90deg); }
+  50%       { transform: rotate(100deg); }
+  60%       { transform: rotate(70deg); }
+  68%       { transform: rotate(20deg); }
+  78%       { transform: rotate(10deg); }
+  88%       { transform: rotate(0deg); }
+  100%      { transform: rotate(0deg); }
+}
+
+/* ── Left thigh: down → crouch bend → tuck up → extend ── */
+@keyframes sbfThighL {
+  0%, 12%   { transform: rotate(5deg); }             /* slight splay */
+  22%       { transform: rotate(35deg); }            /* crouch: knees forward */
+  28%       { transform: rotate(-10deg); }           /* push off */
+  32%       { transform: rotate(-30deg); }           /* legs trailing on launch */
+  42%       { transform: rotate(-100deg); }          /* tuck knees to chest */
+  50%       { transform: rotate(-110deg); }          /* peak tuck */
+  58%       { transform: rotate(-80deg); }           /* open */
+  68%       { transform: rotate(-5deg); }            /* extend for landing */
+  78%       { transform: rotate(30deg); }            /* absorb */
+  88%       { transform: rotate(8deg); }
+  100%      { transform: rotate(5deg); }
+}
+
+@keyframes sbfThighR {
+  0%, 12%   { transform: rotate(-5deg); }
+  22%       { transform: rotate(-30deg); }
+  28%       { transform: rotate(15deg); }
+  32%       { transform: rotate(25deg); }
+  42%       { transform: rotate(95deg); }
+  50%       { transform: rotate(105deg); }
+  58%       { transform: rotate(75deg); }
+  68%       { transform: rotate(0deg); }
+  78%       { transform: rotate(-25deg); }
+  88%       { transform: rotate(-8deg); }
+  100%      { transform: rotate(-5deg); }
+}
+
+/* ── Shins: knee bending ───────────────────────────── */
+@keyframes sbfShinL {
+  0%, 12%   { transform: rotate(0deg); }
+  22%       { transform: rotate(-50deg); }           /* deep knee bend */
+  28%       { transform: rotate(-20deg); }           /* extending on push */
+  32%       { transform: rotate(5deg); }
+  42%       { transform: rotate(80deg); }            /* shin tucked under thigh */
+  50%       { transform: rotate(100deg); }           /* max tuck */
+  58%       { transform: rotate(50deg); }
+  68%       { transform: rotate(5deg); }             /* straighten for landing */
+  78%       { transform: rotate(-40deg); }           /* absorb bend */
+  88%       { transform: rotate(-5deg); }
+  100%      { transform: rotate(0deg); }
+}
+
+@keyframes sbfShinR {
+  0%, 12%   { transform: rotate(0deg); }
+  22%       { transform: rotate(45deg); }
+  28%       { transform: rotate(15deg); }
+  32%       { transform: rotate(-5deg); }
+  42%       { transform: rotate(-75deg); }
+  50%       { transform: rotate(-95deg); }
+  58%       { transform: rotate(-45deg); }
+  68%       { transform: rotate(-5deg); }
+  78%       { transform: rotate(35deg); }
+  88%       { transform: rotate(5deg); }
+  100%      { transform: rotate(0deg); }
+}

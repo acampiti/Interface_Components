@@ -1,0 +1,177 @@
+/* ─────────────────────────────────────────────
+   PulsatingBrain
+   ~160 px container; SVG brain + CSS animations
+───────────────────────────────────────────── */
+
+.pulsating-brain {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Outer glow ring ── */
+.pulsating-brain__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--color-accent) 18%, transparent) 0%,
+    transparent 70%
+  );
+  animation: brainGlowPulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── SVG container — scales + glows in sync ── */
+.pulsating-brain__svg {
+  width: 140px;
+  height: 122px;
+  overflow: visible;
+  animation: brainScalePulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--color-accent) 40%, transparent));
+}
+
+/* ── Hemisphere fills ── */
+.pulsating-brain__hemisphere {
+  fill: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg-primary));
+  stroke: var(--color-accent);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  animation: hemisphereFill 2.4s ease-in-out infinite;
+}
+
+/* ── Sulci (fold lines) ── */
+.pulsating-brain__sulcus {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.55;
+  animation: sulcusFade 2.4s ease-in-out infinite;
+}
+
+/* ── Centre divide ── */
+.pulsating-brain__divide {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
+/* ── Neural spark dots ── */
+.pulsating-brain__spark {
+  fill: var(--color-accent-text);
+  opacity: 0;
+  animation: sparkFade 1s ease-in-out infinite;
+}
+
+/* Individual spark colour + timing offsets */
+.pulsating-brain__spark--1 {
+  fill: var(--color-accent-text);
+  animation-duration: 3.2s;
+  animation-delay: 0s;
+}
+
+.pulsating-brain__spark--2 {
+  fill: var(--color-info);
+  animation-duration: 2.8s;
+  animation-delay: 0.6s;
+}
+
+.pulsating-brain__spark--3 {
+  fill: var(--color-accent);
+  animation-duration: 2.4s;
+  animation-delay: 1.0s;
+}
+
+.pulsating-brain__spark--4 {
+  fill: var(--color-accent-text);
+  animation-duration: 2.6s;
+  animation-delay: 1.6s;
+}
+
+.pulsating-brain__spark--5 {
+  fill: var(--color-info);
+  animation-duration: 3.6s;
+  animation-delay: 0.3s;
+}
+
+.pulsating-brain__spark--6 {
+  fill: var(--color-accent);
+  animation-duration: 3.0s;
+  animation-delay: 1.3s;
+}
+
+/* ─────────────────────────────────────────────
+   Keyframes
+───────────────────────────────────────────── */
+
+/* Brain body scale + glow intensification */
+@keyframes brainScalePulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px color-mix(in srgb, var(--color-accent) 35%, transparent));
+  }
+  45% {
+    transform: scale(1.045);
+    filter: drop-shadow(0 0 12px color-mix(in srgb, var(--color-accent) 70%, transparent))
+            drop-shadow(0 0 24px color-mix(in srgb, var(--color-accent) 30%, transparent));
+  }
+  55% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--color-accent) 60%, transparent));
+  }
+}
+
+/* Outer radial glow */
+@keyframes brainGlowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Hemisphere interior fill brightens on pulse */
+@keyframes hemisphereFill {
+  0%, 100% {
+    fill: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg-primary));
+  }
+  50% {
+    fill: color-mix(in srgb, var(--color-accent) 22%, var(--color-bg-secondary));
+  }
+}
+
+/* Sulci brighten slightly with each pulse */
+@keyframes sulcusFade {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Spark dots fade in along their motion path then fade out */
+@keyframes sparkFade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}

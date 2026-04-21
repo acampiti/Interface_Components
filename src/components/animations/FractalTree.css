@@ -1,0 +1,62 @@
+/*
+ * FractalTree — recursive branching tree that draws itself and resets
+ *
+ * 160×160 SVG. Branches draw in sequentially using stroke-dashoffset,
+ * then fade out and restart.
+ *
+ * Custom properties: --color-accent, --color-accent-text,
+ *   --color-positive, --color-bg-primary
+ */
+
+.fractal-tree {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+}
+
+.fractal-tree svg {
+  display: block;
+}
+
+.fractal-tree__branch {
+  stroke: var(--color-accent-text);
+  fill: none;
+  stroke-linecap: round;
+
+  /* Each branch line — set dash to its own length, offset starts fully hidden */
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+
+  animation: fractalDraw 3.5s ease-out infinite;
+  /* animationDelay set inline by TSX */
+}
+
+@keyframes fractalDraw {
+  /* Draw in */
+  0% {
+    stroke-dashoffset: 60;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  30% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  /* Hold */
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  /* Fade out */
+  90% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 60;
+    opacity: 0;
+  }
+}

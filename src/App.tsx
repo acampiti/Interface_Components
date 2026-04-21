@@ -10,6 +10,9 @@ import { ChartsVizPage } from "@/showcase/pages/ChartsVizPage";
 import { InteractivePage } from "@/showcase/pages/InteractivePage";
 import { FeedbackPage } from "@/showcase/pages/FeedbackPage";
 import { AnimationsPage } from "@/showcase/pages/AnimationsPage";
+import { TradeAppPage } from "@/showcase/pages/TradeAppPage";
+import { FontsPage } from "@/showcase/pages/FontsPage";
+import { HiVisColorsPage } from "@/showcase/pages/HiVisColorsPage";
 import "@/themes/themes.css";
 import "./App.css";
 
@@ -22,6 +25,9 @@ const TABS = [
   { id: "interactive",    label: "Interactive" },
   { id: "feedback",       label: "Feedback" },
   { id: "animations",     label: "Animations" },
+  { id: "trade-app",      label: "Trade App Elements" },
+  { id: "hi-vis-colors",  label: "Hi Vis Colors" },
+  { id: "fonts",          label: "Fonts" },
 ];
 
 function App() {
@@ -43,6 +49,9 @@ function App() {
           {activeTab === "interactive"   && <InteractivePage />}
           {activeTab === "feedback"      && <FeedbackPage />}
           {activeTab === "animations"    && <AnimationsPage />}
+          {activeTab === "trade-app"     && <TradeAppPage />}
+          {activeTab === "hi-vis-colors" && <HiVisColorsPage />}
+          {activeTab === "fonts"         && <FontsPage />}
         </main>
       </div>
     </ThemeProvider>

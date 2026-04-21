@@ -1,0 +1,227 @@
+/* ============================================================
+   SatelliteOrbit — 180×180 px pure-CSS animation
+   A satellite orbits an Earth globe on a tilted elliptical path.
+   ============================================================ */
+
+/* ── Container ─────────────────────────────────────────────── */
+
+.satellite-orbit {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: auto;
+  /* Dark space background */
+  background: radial-gradient(ellipse at 40% 40%, #0d1b2a 0%, #050a10 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Background SVG (stars + orbit ring) ───────────────────── */
+
+.satellite-orbit__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Stars — three flicker variants for variety */
+
+.satellite-orbit__star {
+  fill: var(--color-text-muted, #8899aa);
+  opacity: 0.55;
+}
+
+.satellite-orbit__star--1 {
+  animation: starTwinkle 3.1s ease-in-out infinite;
+}
+
+.satellite-orbit__star--2 {
+  animation: starTwinkle 4.7s ease-in-out infinite 0.9s;
+}
+
+.satellite-orbit__star--3 {
+  animation: starTwinkle 5.3s ease-in-out infinite 2.1s;
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% { opacity: 0.55; }
+  45%  { opacity: 0.15; }
+  50%  { opacity: 0.85; }
+  55%  { opacity: 0.15; }
+}
+
+/* Orbit ring — dashed ellipse, slightly tilted via rx/ry */
+
+.satellite-orbit__ring {
+  fill: none;
+  stroke: var(--color-border, #334455);
+  stroke-width: 0.8;
+  stroke-dasharray: 4 5;
+  opacity: 0.65;
+}
+
+/* ── Earth ──────────────────────────────────────────────────── */
+
+.satellite-orbit__earth-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Sit above the back half of the ring, below the front half */
+  z-index: 2;
+}
+
+.satellite-orbit__earth {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-info, #1a8fd1)    0deg   60deg,
+    var(--color-positive, #22a05b) 60deg  95deg,
+    var(--color-info, #1a8fd1)   95deg  160deg,
+    var(--color-positive, #22a05b) 160deg 185deg,
+    var(--color-info, #1a8fd1)  185deg  260deg,
+    var(--color-positive, #22a05b) 260deg 300deg,
+    var(--color-info, #1a8fd1)  300deg  360deg
+  );
+  animation: earthRotate 12s linear infinite;
+  box-shadow:
+    inset -8px -4px 16px rgba(0, 0, 0, 0.55),
+    0 0 14px rgba(30, 130, 210, 0.25);
+}
+
+/* Thin atmosphere glow */
+
+.satellite-orbit__atmosphere {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(30, 130, 210, 0.18) 0%, transparent 70%)
+    border-box;
+  box-shadow: 0 0 10px 3px rgba(30, 130, 210, 0.18);
+  pointer-events: none;
+}
+
+@keyframes earthRotate {
+  from { filter: hue-rotate(0deg) brightness(1); }
+  50%  { filter: hue-rotate(15deg) brightness(1.08); }
+  to   { filter: hue-rotate(0deg) brightness(1); }
+}
+
+/* ── Satellite orbit pivot ──────────────────────────────────── */
+
+/*
+  The pivot is a zero-size div pinned to the center.
+  It spins continuously (8 s / revolution).
+  The arm inside it holds the satellite at a fixed radial offset.
+
+  "Behind Earth" effect:
+    - z-index 1 for the front half (0° → 180°): satellite visible above Earth.
+    - z-index 1 still, but opacity drops to 0.18 for the back half (180° → 360°)
+      giving the illusion of passing behind the globe.
+  This is achieved with a second animation on the arm that modulates
+  opacity and z-index in sync with the rotation.
+*/
+
+.satellite-orbit__pivot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 3;          /* front layer (front half visible above Earth) */
+  animation:
+    pivotSpin       8s linear infinite,
+    pivotZLayer     8s linear infinite;
+}
+
+.satellite-orbit__arm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Push satellite to orbital radius along X.
+     The orbit ring rx=68; applying the same offset centers the satellite on it. */
+  transform: translateX(68px) translateY(-5px); /* slight Y offset for ellipse tilt feel */
+  animation: satelliteDepth 8s linear infinite;
+}
+
+/* ── Satellite shape ────────────────────────────────────────── */
+
+.satellite-orbit__satellite {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Main body — small metallic rectangle */
+
+.satellite-orbit__body {
+  width: 8px;
+  height: 6px;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-text, #c8d6e5) 0%,
+    var(--color-accent, #3a7bd5) 100%
+  );
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(58, 123, 213, 0.6);
+}
+
+/* Solar panels — thin flat rectangles either side */
+
+.satellite-orbit__panel {
+  width: 10px;
+  height: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--color-info, #1a8fd1) 0%,
+    rgba(26, 143, 209, 0.55) 100%
+  );
+  border-radius: 1px;
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ── Keyframes ──────────────────────────────────────────────── */
+
+/* Continuous clockwise spin for the pivot */
+@keyframes pivotSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/*
+  Z-layer trick:
+    0%–50%   → front half of orbit → pivot z-index 3 (above Earth z-index 2)
+    50%–100% → back half of orbit  → pivot z-index 1 (below Earth z-index 2)
+
+  CSS cannot animate z-index smoothly, so we step it at 50%/100%.
+*/
+@keyframes pivotZLayer {
+  0%         { z-index: 3; }
+  49.99%     { z-index: 3; }
+  50%        { z-index: 1; }
+  99.99%     { z-index: 1; }
+  100%       { z-index: 3; }
+}
+
+/*
+  Depth opacity: satellite dims as it moves behind Earth,
+  brightens as it returns to the front.
+  Matches the 8 s pivotSpin period.
+*/
+@keyframes satelliteDepth {
+  0%   { opacity: 1;    transform: translateX(68px) translateY(-5px) scale(1); }
+  25%  { opacity: 1;    transform: translateX(68px) translateY(-5px) scale(1); }
+  /* entering behind Earth */
+  45%  { opacity: 0.55; transform: translateX(68px) translateY(-5px) scale(0.88); }
+  50%  { opacity: 0.18; transform: translateX(68px) translateY(-5px) scale(0.80); }
+  55%  { opacity: 0.18; transform: translateX(68px) translateY(-5px) scale(0.80); }
+  /* emerging from behind Earth */
+  75%  { opacity: 0.55; transform: translateX(68px) translateY(-5px) scale(0.88); }
+  100% { opacity: 1;    transform: translateX(68px) translateY(-5px) scale(1); }
+}

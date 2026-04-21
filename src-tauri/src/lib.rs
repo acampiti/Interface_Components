@@ -9,6 +9,7 @@ pub fn run() {
                 let _ = w.set_focus();
             }
         }))
+        .plugin(tauri_plugin_window_state::Builder::default().build())
         .plugin(tauri_plugin_shell::init())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

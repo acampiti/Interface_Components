@@ -1,0 +1,160 @@
+/* ── Font card ──────────────────────────────────────── */
+
+.fonts-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.fonts-card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+
+.fonts-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 12px;
+}
+
+.fonts-header__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+
+.fonts-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.fonts-header__notes {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ── Badges ─────────────────────────────────────────── */
+
+.fonts-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: ui-monospace, "Cascadia Mono", Menlo, monospace;
+}
+
+.fonts-badge--sans  { background: rgba(74, 158, 255, 0.15); color: #4a9eff; border: 1px solid rgba(74, 158, 255, 0.3); }
+.fonts-badge--serif { background: rgba(255, 176, 0, 0.15);  color: #FFB000; border: 1px solid rgba(255, 176, 0, 0.3); }
+.fonts-badge--mono  { background: rgba(0, 255, 127, 0.12);  color: #00FF7F; border: 1px solid rgba(0, 255, 127, 0.3); }
+.fonts-badge--ok    { background: rgba(34, 153, 77, 0.15);  color: #22994d; border: 1px solid rgba(34, 153, 77, 0.3); }
+.fonts-badge--missing { background: rgba(179, 38, 58, 0.15); color: #b3263a; border: 1px solid rgba(179, 38, 58, 0.3); }
+
+/* ── Block ──────────────────────────────────────────── */
+
+.fonts-block {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.fonts-block__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  font-family: ui-monospace, "Cascadia Mono", Menlo, monospace;
+}
+
+.fonts-block__content {
+  color: var(--color-text-primary);
+}
+
+/* ── Sizes ──────────────────────────────────────────── */
+
+.fonts-size-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 2px 0;
+}
+
+.fonts-size-row__tag {
+  display: inline-block;
+  width: 38px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-family: ui-monospace, "Cascadia Mono", Menlo, monospace;
+  flex-shrink: 0;
+}
+
+/* ── Styles ─────────────────────────────────────────── */
+
+.fonts-style-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 4px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+}
+
+.fonts-style-row:last-child {
+  border-bottom: none;
+}
+
+.fonts-style-row__tag {
+  display: inline-block;
+  width: 80px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-family: ui-monospace, "Cascadia Mono", Menlo, monospace;
+  flex-shrink: 0;
+}
+
+/* ── Colors ─────────────────────────────────────────── */
+
+.fonts-color-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 14px;
+}
+
+.fonts-color-cell {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.fonts-color-cell__tag {
+  display: inline-block;
+  width: 60px;
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-family: ui-monospace, "Cascadia Mono", Menlo, monospace;
+  font-weight: 400 !important;
+  flex-shrink: 0;
+}
+
+/* ── Code block ─────────────────────────────────────── */
+
+.fonts-code {
+  margin: 0;
+  white-space: pre;
+  color: var(--color-text-primary);
+  background: transparent;
+}

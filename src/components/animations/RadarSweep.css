@@ -1,0 +1,223 @@
+/*
+ * RadarSweep — pure CSS radar animation
+ *
+ * Layout: 160×160 px circle.
+ * The sweep arm is a rotating conic-gradient disc that sits above the
+ * background rings.  Blips are absolutely positioned dots whose keyframe
+ * timing is driven by inline animationDelay values injected from TSX so that
+ * each blip ignites exactly when the sweep arm passes over it.
+ *
+ * Custom properties consumed: --color-accent, --color-accent-text,
+ *   --color-bg-primary, --color-bg-secondary, --color-border,
+ *   --color-positive, --color-text-primary, --color-text-muted
+ */
+
+/* ─── Container ─────────────────────────────────────────────────────────── */
+
+.radar-sweep {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  border-radius: 50%;
+
+  /* Deep dark background — use primary bg with a slight tint toward accent */
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--color-bg-secondary) 80%, var(--color-accent) 20%) 0%,
+    var(--color-bg-primary) 100%
+  );
+
+  /* Outer bezel ring */
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 0 12px 2px color-mix(in srgb, var(--color-accent) 30%, transparent 70%),
+    inset 0 0 8px 2px rgba(0, 0, 0, 0.6);
+
+  overflow: hidden;
+}
+
+/* ─── Concentric range rings ─────────────────────────────────────────────── */
+
+.radar-sweep__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent 40%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.radar-sweep__ring--1 {
+  width:  53px;
+  height: 53px;
+}
+
+.radar-sweep__ring--2 {
+  width:  106px;
+  height: 106px;
+}
+
+.radar-sweep__ring--3 {
+  width:  152px;
+  height: 152px;
+}
+
+/* ─── Crosshair lines ────────────────────────────────────────────────────── */
+
+.radar-sweep__crosshair {
+  position: absolute;
+  background: color-mix(in srgb, var(--color-border) 50%, transparent 50%);
+  pointer-events: none;
+}
+
+.radar-sweep__crosshair--h {
+  top: 50%;
+  left: 4px;
+  right: 4px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.radar-sweep__crosshair--v {
+  left: 50%;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+/* ─── Sweep arm ──────────────────────────────────────────────────────────── */
+/*
+ * The arm is a full-size disc rendered with a conic-gradient:
+ *   - a bright leading edge (narrow sliver of accent colour)
+ *   - a fading green trail covering ~120° that fades to transparent
+ *   - the rest is fully transparent so the background shows through
+ *
+ * The gradient origin is at 12 o'clock (from 0deg) and sweeps clockwise.
+ * We rotate the disc with @keyframes radarRotate so the leading edge travels
+ * 360° over the sweep duration.
+ */
+
+.radar-sweep__arm {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: radarRotate 3s linear infinite;
+  transform-origin: center center;
+
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    /* transparent gap (240°) */
+    transparent                                                 0deg,
+    transparent                                                 240deg,
+    /* trail fades in from nothing over ~120° */
+    color-mix(in srgb, var(--color-positive) 0%,  transparent 100%)   240deg,
+    color-mix(in srgb, var(--color-positive) 6%,  transparent 94%)    270deg,
+    color-mix(in srgb, var(--color-positive) 14%, transparent 86%)    300deg,
+    color-mix(in srgb, var(--color-positive) 28%, transparent 72%)    330deg,
+    /* bright leading edge — narrow sliver */
+    color-mix(in srgb, var(--color-positive) 70%, var(--color-accent-text) 30%)  357deg,
+    color-mix(in srgb, var(--color-accent-text) 90%, transparent 10%)            359.5deg,
+    transparent                                                                   360deg
+  );
+
+  /* Blend so only the lit portion shows above the dark background */
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+@keyframes radarRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Blips ──────────────────────────────────────────────────────────────── */
+/*
+ * Each blip is absolutely positioned (left/top set by TSX).
+ * The keyframe fires once per revolution: peak brightness right as the sweep
+ * passes, then a long decay back to near-invisible.
+ *
+ * animationDuration and animationDelay are set via inline style in TSX so
+ * they stay locked to the sweep period without duplicating the constant.
+ */
+
+.radar-sweep__blip {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Resting state: very dim, barely visible */
+  background: var(--color-accent-text);
+  opacity: 0.08;
+  box-shadow: none;
+
+  animation-name: blipFlash;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  /* duration + delay come from inline style */
+}
+
+@keyframes blipFlash {
+  /*
+   * At t=0 the sweep arm is exactly over this blip.
+   * 0%   → peak flash
+   * 8%   → quick decay to a hot afterglow
+   * 40%  → slow fade to barely-there
+   * 100% → back to resting just before next sweep arrives
+   */
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.8);
+    background: var(--color-accent-text);
+    box-shadow:
+      0 0 4px 2px var(--color-accent-text),
+      0 0 8px 4px color-mix(in srgb, var(--color-accent) 60%, transparent 40%);
+  }
+  8% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1.3);
+    background: var(--color-positive);
+    box-shadow:
+      0 0 3px 1px var(--color-positive),
+      0 0 6px 2px color-mix(in srgb, var(--color-positive) 40%, transparent 60%);
+  }
+  40% {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) scale(1.0);
+    background: var(--color-positive);
+    box-shadow: 0 0 2px 1px color-mix(in srgb, var(--color-positive) 30%, transparent 70%);
+  }
+  100% {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1.0);
+    background: var(--color-accent-text);
+    box-shadow: none;
+  }
+}
+
+/* ─── Center dot ─────────────────────────────────────────────────────────── */
+
+.radar-sweep__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent-text);
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 4px 2px var(--color-accent-text),
+    0 0 8px 4px color-mix(in srgb, var(--color-accent) 50%, transparent 50%);
+  animation: centerPulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes centerPulse {
+  0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.0); }
+  50%       { opacity: 1.0; transform: translate(-50%, -50%) scale(1.25); }
+}
